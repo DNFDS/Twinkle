@@ -11,8 +11,8 @@ public class SongListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songlist);
 
-        RecyclerView songlistview = (RecyclerView)findViewById(R.id.view_SongList);
-        songlistview.setLayoutManager(new LinearLayoutManager(SongListActivity.this));
-        songlistview.setAdapter(new SongListAdapter(SongListActivity.this));
+        RecyclerView songListView = (RecyclerView)findViewById(R.id.view_SongList);
+        songListView.setLayoutManager(new LinearLayoutManager(SongListActivity.this));
+        songListView.setAdapter(new SongListAdapter(SongListActivity.this));
     }
 }
