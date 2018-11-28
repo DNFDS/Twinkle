@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Twinkle</string>
+    <string name="app_name">LieReader</string>
+    <string name="action_settings"></string>
 </resources>
