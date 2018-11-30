@@ -4,9 +4,10 @@ public class SongList {  //歌单实体类
 
     private String SongListID;
     private String SongListName;
-    private String SongListImage;
+    private int SongListImageId;
     private String IsPrivate;
     private String UserID;
+    private String Songs_count;
 
     public String getSongListID() {
         return SongListID;
@@ -20,11 +21,11 @@ public class SongList {  //歌单实体类
     public void setSongListName(String songListName) {
         SongListName = songListName;
     }
-    public String getSongListImage() {
-        return SongListImage;
+    public int getSongListImageId() {
+        return SongListImageId;
     }
-    public void setSongListImage(String songListImage) {
-        SongListImage = songListImage;
+    public void setSongListImageId(int songListImageId) {
+        SongListImageId = songListImageId;
     }
     public String getIsPrivate() {
         return IsPrivate;
@@ -35,7 +36,7 @@ public class SongList {  //歌单实体类
     public String getUserID() {
         return UserID;
     }
-    public void setUserID(String userID) {
-        UserID = userID;
-    }
+    public void setUserID(String userID) { UserID = userID; }
+    public String getSongs_count(){return  Songs_count;}
+    public void setSongs_count(String songs_count) { Songs_count = songs_count; }
 }
