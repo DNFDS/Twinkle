@@ -1,6 +1,7 @@
 package com.example.twinkle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,13 +44,16 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongLi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SongListViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull SongListViewHolder viewHolder, final int position) {
         viewHolder.textView.setText(songList.get(position).getSongName());
         viewHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //给播放器提供接口
-                Toast.makeText(mContext, "SingleSongClicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "SingleSongClicked :"+songList.get(position).getSongName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext,PlayerActivity.class);
+                intent.putExtra("songName",songList.get(position).getSongName());
+                mContext.startActivity(intent);
             }
         });
     }

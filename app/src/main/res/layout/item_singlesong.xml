@@ -8,9 +8,11 @@
         android:id="@+id/item_SingleSong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:gravity="left"
-        android:text="123">
+        android:text="123"
+
+        >
     </TextView>
 
 </LinearLayout>
