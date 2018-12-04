@@ -1,14 +1,20 @@
 package com.example.twinkle;
 
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -16,9 +22,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.example.twinkle.SonglistAdapter.InnerItemOnclickListener;
 import android.widget.AdapterView.OnItemClickListener;
-import com.example.twinkle.ScrollDisabledListView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class FgMymusicFragment extends Fragment implements InnerItemOnclickListener, OnItemClickListener{
     private List<SongList> created_songListList = new ArrayList<SongList>();
@@ -27,14 +35,18 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
     private ImageView collected_songlist_drop;
     private ImageView created_songlist_line;
     private ImageView collected_songlist_line;
-    private ImageView singlist_operate;
     private ListView created_songlist;
     private ListView collected_songlist;
     private TextView popup_out;
-    private View contentView;
+    private TextView new_songlist;
+    private TextView new_songlist_cancel;
+    private View popupView;
+    private View newsonglistView;
     private PopupWindow popupWindow;
+    private PopupWindow newsonglistWindow;
     private SonglistAdapter created_songlistAdapter;
     private SonglistAdapter collected_songlistAdapter;
+    private EditText newsonglistEditText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -159,16 +171,16 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     }
 
-    //底部弹窗
+    //初始化底部弹窗
     private void initPopwindow() {
-        contentView = LayoutInflater.from(this.getActivity()).inflate(R.layout.popup_layout, null, false);
-        popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        popupView = LayoutInflater.from(this.getActivity()).inflate(R.layout.popup_layout, null, false);
+        popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         popupWindow.setFocusable(true);
         popupWindow.setTouchable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setAnimationStyle(R.style.animTranslate);
-        popup_out=contentView.findViewById(R.id.popup_out);
+        popup_out=popupView.findViewById(R.id.popup_out);
         popup_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,13 +192,59 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
                 setBackgroundAlpha(1.0f);
             }
         });
+        newsonglistView= LayoutInflater.from(this.getActivity()).inflate(R.layout.new_songlist_layout, null, false);
+        newsonglistWindow = new PopupWindow(newsonglistView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        newsonglistWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        newsonglistWindow.setFocusable(true);
+        newsonglistWindow.setTouchable(true);
+        newsonglistWindow.setOutsideTouchable(true);
+        newsonglistWindow.setAnimationStyle(R.style.newsonglistTranslate);
+        newsonglistWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override public void onDismiss() {
+                boolean handler =new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        setBackgroundAlpha(1.0f);
+                    }
+                 },300); // 延时0.3秒
+            }
+        });
+        new_songlist=popupView.findViewById(R.id.pop_new_songlist_area);
+        new_songlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNewSonglistWindow();
+                popupWindow.dismiss();
+                setBackgroundAlpha(0.7f);
+                newsonglistEditText =newsonglistView.findViewById(R.id.new_songlist_eidtbox);
+                newsonglistEditText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                newsonglistEditText .setImeOptions(EditorInfo.IME_ACTION_DONE);
+                newsonglistEditText.setFocusable(true);
+                newsonglistEditText.setFocusableInTouchMode(true);;
+                InputMethodManager inputManager = (InputMethodManager)newsonglistEditText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                newsonglistEditText.requestFocus();
+                inputManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
+                inputManager.showSoftInput(newsonglistEditText, 0);
+            }
+        });
+        new_songlist_cancel=newsonglistView.findViewById(R.id.cancel_box);
+        new_songlist_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newsonglistWindow.dismiss();
+            }
+        });
     }
-
+    //显示底部弹窗
     private void showPopWindow() {
         View rootview = LayoutInflater.from(this.getActivity()).inflate(R.layout.activity_main, null);
         popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
-
+    //显示新建歌单弹窗
+    private void showNewSonglistWindow() {
+        View rootview = LayoutInflater.from(this.getActivity()).inflate(R.layout.activity_main, null);
+        newsonglistWindow.showAtLocation(rootview, Gravity.TOP, 0, 100);
+    }
+    //调整屏幕亮度
     public void setBackgroundAlpha(float bgAlpha) {
         WindowManager.LayoutParams lp = this.getActivity().getWindow().getAttributes();
         this.getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND, WindowManager.LayoutParams.FLAG_DIM_BEHIND);

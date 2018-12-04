@@ -16,6 +16,11 @@
         <!--<item name="android:textColorPrimary">@color/colorTheme</item>-->
     </style>
     <!--底部弹窗动画-->
+    <style name="newsonglistTranslate">
+        <item name="android:windowEnterAnimation">@anim/new_songlist_translate_in</item>
+        <item name="android:windowExitAnimation">@anim/new_songlist_translate_out</item>
+    </style>
+    <!--底部弹窗动画-->
     <style name="animTranslate">
         <item name="android:windowEnterAnimation">@anim/translate_in</item>
         <item name="android:windowExitAnimation">@anim/translate_out</item>
