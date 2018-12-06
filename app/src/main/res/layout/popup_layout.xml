@@ -74,6 +74,15 @@
             android:layout_height="1dp"
             android:background="#FAFAFA" />
 
+        <TextView
+            android:id="@+id/pop_manage_songlist_area"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pop_new_songlist_title_line"
+            android:textColor="@color/colorContent"
+            android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/pop_manage_songlist_image"
             android:layout_width="25dp"

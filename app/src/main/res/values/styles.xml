@@ -15,6 +15,10 @@
         <!--正常状态下字体颜色和icon颜色-->
         <!--<item name="android:textColorPrimary">@color/colorTheme</item>-->
     </style>
+    <!-- 选择框样式 -->
+    <style name="MyCheckBox" parent="@android:style/Widget.Material.CompoundButton.CheckBox">
+        <item name="colorControlActivated">@color/colorBlue</item>
+    </style>
     <!--底部弹窗动画-->
     <style name="newsonglistTranslate">
         <item name="android:windowEnterAnimation">@anim/new_songlist_translate_in</item>

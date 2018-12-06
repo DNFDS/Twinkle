@@ -12,7 +12,7 @@
     <color name="colorWhite">#ffffffff</color>
 
     <!--主页tab背景-->
-    <color name="colorTabBg">#ffffffff</color>
+    <color name="colorTabBg">#ffffff</color>
     <color name="colorTabTextCheck">#ffce3d3a</color>
     <color name="colorTabTextNormal">#e28b89</color>
 

@@ -163,6 +163,26 @@
         android:layout_marginTop="144dp"
         app:srcCompat="@drawable/shrink" />
 
+    <ImageView
+        android:id="@+id/add_created_songlist_btn"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="335dp"
+        android:layout_marginTop="140dp"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/manage_created_songlist_btn"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="375dp"
+        android:layout_marginTop="140dp"
+        app:srcCompat="@drawable/manage" />
+
     <ListView
         android:id="@+id/created_songlist_list_view"
         android:layout_width="match_parent"
@@ -186,7 +206,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/created_songlist_line"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="13dp"
         android:text="收藏的歌单"
         android:textColor="@color/colorContent"
         android:textSize="18sp" />
@@ -200,6 +220,27 @@
         android:layout_marginStart="105dp"
         android:layout_marginTop="15dp"
         app:srcCompat="@drawable/drop" />
+
+    <ImageView
+        android:id="@+id/add_collected_songlist_btn"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/created_songlist_line"
+        android:layout_marginStart="335dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/manage_collected_songlist_btn"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/created_songlist_line"
+        android:layout_marginStart="375dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/manage" />
+
 
     <ListView
         android:id="@+id/collected_songlist_list_view"
