@@ -18,116 +18,88 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/pop_create_songlist_title"
+            android:id="@+id/pop_download_btn_area"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pop_songlist_title_line"
+            android:textColor="@color/colorContent"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/pop_songlist_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="创建的歌单" />
-        <ImageView
-            android:id="@+id/pop_create_songlist_title_line"
-            android:layout_width="fill_parent"
-            android:layout_below="@+id/pop_create_songlist_title"
-            android:layout_marginTop="15dp"
-            android:layout_height="1dp"
-            android:background="#FAFAFA" />
+            android:text="歌单:temp"
+            android:textSize="15sp"/>
 
         <ImageView
-            android:id="@+id/pop_new_songlist_image"
+            android:id="@+id/pop_songlist_title_line"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/pop_songlist_title"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+
+        <ImageView
+            android:id="@+id/pop_download_image"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_below="@+id/pop_create_songlist_title_line"
+            android:layout_below="@+id/pop_songlist_title_line"
             android:layout_alignParentStart="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             app:srcCompat="@drawable/recent" />
 
         <TextView
-            android:id="@+id/pop_new_songlist_title"
+            android:id="@+id/pop_download_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/pop_create_songlist_title_line"
+            android:layout_below="@+id/pop_songlist_title_line"
             android:layout_marginStart="50dp"
             android:layout_marginTop="15dp"
-            android:text="创建新歌单"
-            android:textColor="@color/colorContent"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/pop_new_songlist_area"
-            android:layout_width="380dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/pop_create_songlist_title_line"
+            android:text="下载歌单"
             android:textColor="@color/colorContent"
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/pop_new_songlist_title_line"
+            android:id="@+id/pop_download_line"
             android:layout_width="335dp"
-            android:layout_alignStart="@+id/pop_new_songlist_title"
-            android:layout_below="@+id/pop_new_songlist_title"
+            android:layout_alignStart="@+id/pop_download_title"
+            android:layout_below="@+id/pop_download_title"
             android:layout_marginTop="15dp"
             android:layout_height="1dp"
-            android:background="#FAFAFA" />
+            android:background="@color/colorGray" />
 
         <TextView
-            android:id="@+id/pop_manage_songlist_area"
+            android:id="@+id/pop_share_btn_area"
             android:layout_width="380dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/pop_new_songlist_title_line"
+            android:layout_below="@+id/pop_download_line"
             android:textColor="@color/colorContent"
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/pop_manage_songlist_image"
+            android:id="@+id/pop_share_image"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_below="@+id/pop_new_songlist_title_line"
-            android:layout_alignStart="@+id/pop_new_songlist_image"
+            android:layout_below="@+id/pop_download_line"
+            android:layout_alignStart="@+id/pop_download_image"
             android:layout_marginTop="15dp"
             app:srcCompat="@drawable/recent" />
 
         <TextView
-            android:id="@+id/pop_manage_songlist_title"
+            android:id="@+id/pop_share_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/pop_new_songlist_title_line"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="15dp"
-            android:text="歌单管理"
-            android:textColor="@color/colorContent"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/pop_manage_songlist_title_line"
-            android:layout_width="335dp"
-            android:layout_alignStart="@+id/pop_new_songlist_title"
-            android:layout_below="@+id/pop_manage_songlist_title"
-            android:layout_marginTop="15dp"
-            android:layout_height="1dp"
-            android:background="#FAFAFA" />
-
-        <ImageView
-            android:id="@+id/pop_share_songlist_image"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_below="@+id/pop_manage_songlist_title_line"
-            android:layout_alignStart="@+id/pop_new_songlist_image"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/recent" />
-
-        <TextView
-            android:id="@+id/pop_share_songlist_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/pop_manage_songlist_title_line"
+            android:layout_below="@+id/pop_download_line"
             android:layout_marginStart="50dp"
             android:layout_marginTop="15dp"
             android:text="分享歌单"
@@ -135,12 +107,51 @@
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/pop_share_songlist_title_line"
+            android:id="@+id/pop_share_line"
             android:layout_width="335dp"
-            android:layout_alignStart="@+id/pop_new_songlist_title"
-            android:layout_below="@+id/pop_share_songlist_title"
+            android:layout_alignStart="@+id/pop_download_title"
+            android:layout_below="@+id/pop_share_title"
             android:layout_marginTop="15dp"
             android:layout_height="1dp"
-            android:background="#FFFFFF" />
+            android:background="@color/colorGray" />
+
+        <TextView
+            android:id="@+id/pop_edit_btn_area"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pop_share_line"
+            android:textColor="@color/colorContent"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/pop_edit_image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/pop_share_line"
+            android:layout_alignStart="@+id/pop_download_image"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/recent" />
+
+        <TextView
+            android:id="@+id/pop_edit_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pop_share_line"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:text="编辑歌单信息"
+            android:textColor="@color/colorContent"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/pop_share_songlist_title_line"
+            android:layout_width="335dp"
+            android:layout_alignStart="@+id/pop_share_title"
+            android:layout_below="@+id/pop_edit_title"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"/>
     </RelativeLayout>
 </RelativeLayout>

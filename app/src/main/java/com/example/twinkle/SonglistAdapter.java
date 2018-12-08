@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.twinkle.FgMymusicFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SonglistAdapter extends ArrayAdapter<SongList> implements View.OnClickListener {
@@ -39,6 +37,7 @@ public class SonglistAdapter extends ArrayAdapter<SongList> implements View.OnCl
             return 0;
         }
     }
+
 
     @Override
     public View getView(int position,View convertView,ViewGroup parent){

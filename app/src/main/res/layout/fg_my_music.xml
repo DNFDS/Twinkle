@@ -1,261 +1,354 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorBlue">
 
-    <ImageView
-        android:id="@+id/local_music_imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/local_music" />
-
-    <ImageView
-        android:id="@+id/collect_music_imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/local_music_imageView"
-        android:layout_marginStart="133dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/like" />
-
-    <ImageView
-        android:id="@+id/download_music_imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_imageView"
-        android:layout_marginEnd="133dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/download" />
-
-    <ImageView
-        android:id="@+id/recent_music_imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_imageView"
-        android:layout_marginEnd="38dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/recent" />
-
-    <TextView
-        android:id="@+id/local_music_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="63dp"
-        android:text="本地音乐"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/collect_music_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/local_music_title"
-        android:layout_marginStart="118dp"
-        android:text="我的收藏"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/download_music_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_title"
-        android:layout_marginEnd="134dp"
-        android:text="下载"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/recent_music_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_title"
-        android:layout_marginEnd="24dp"
-        android:text="最近播放"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/recent_music_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_count"
-        android:layout_marginEnd="52dp"
-        android:text="1"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/download_music_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/local_music_count"
-        android:layout_marginEnd="148dp"
-        android:text="0"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/collect_music_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/local_music_count"
-        android:layout_marginStart="149dp"
-        android:text="2"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/local_music_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="90dp"
-        android:text="6"
-        android:textSize="16sp" />
-    <ImageView
-        android:id="@+id/line"
-        android:layout_width="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="125dp"
-        android:layout_height="5dp"
-        android:background="#FAFAFA"
-        />
-
-    <TextView
-        android:id="@+id/created_songlist_title"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="140dp"
-        android:text="创建的歌单"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
-
-
-    <ImageView
-        android:id="@+id/created_songlist_drop"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="144dp"
-        app:srcCompat="@drawable/shrink" />
-
-    <ImageView
-        android:id="@+id/add_created_songlist_btn"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="140dp"
-        app:srcCompat="@drawable/add" />
-
-    <ImageView
-        android:id="@+id/manage_created_songlist_btn"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="375dp"
-        android:layout_marginTop="140dp"
-        app:srcCompat="@drawable/manage" />
-
-    <ListView
-        android:id="@+id/created_songlist_list_view"
+    <RelativeLayout
+        android:id="@+id/user_div"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/created_songlist_title"
-        android:divider="@null" >
-    </ListView>
+        android:background="@drawable/fgmymusic_bg">
 
-    <ImageView
-        android:id="@+id/created_songlist_line"
-        android:layout_width="fill_parent"
-        android:layout_below="@id/created_songlist_list_view"
-        android:layout_height="2dp"
-        android:background="#fafafa"
-        android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/user_image" />
 
-    <TextView
-        android:id="@+id/collected_songlist_title"
+        <TextView
+            android:id="@+id/user_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/user_image"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="22dp"
+            android:text="梁月"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/vip_image"
+            android:layout_width="38dp"
+            android:layout_height="19dp"
+            android:layout_toEndOf="@+id/user_name_title"
+            android:layout_alignTop="@+id/user_name_title"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vip" />
+
+        <TextView
+            android:id="@+id/user_follow_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/user_image"
+            android:layout_alignTop="@+id/user_name_title"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="关注"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/user_div_vertical_line"
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            android:layout_alignTop="@+id/user_follow_title"
+            android:layout_toEndOf="@+id/user_follow_title"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/colorGray" />
+
+        <TextView
+            android:id="@+id/user_fans_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/user_follow_title"
+            android:layout_toEndOf="@+id/user_follow_title"
+            android:layout_marginStart="11dp"
+            android:text="粉丝"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="45dp"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/news" />
+
+        <ImageView
+            android:id="@+id/user_div_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="90dp"
+            android:background="@color/colorGray" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_div"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/created_songlist_line"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="13dp"
-        android:text="收藏的歌单"
-        android:textColor="@color/colorContent"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/user_div"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/collected_songlist_drop"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/created_songlist_line"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/drop" />
+        <ImageView
+            android:id="@+id/local_music_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/local_music" />
 
-    <ImageView
-        android:id="@+id/add_collected_songlist_btn"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/created_songlist_line"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/add" />
+        <ImageView
+            android:id="@+id/collect_music_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_marginStart="133dp"
+            app:srcCompat="@drawable/like" />
 
-    <ImageView
-        android:id="@+id/manage_collected_songlist_btn"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/created_songlist_line"
-        android:layout_marginStart="375dp"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/manage" />
+        <ImageView
+            android:id="@+id/download_music_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_marginEnd="135dp"
+            app:srcCompat="@drawable/download" />
+
+        <ImageView
+            android:id="@+id/recent_music_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_marginEnd="38dp"
+            app:srcCompat="@drawable/recent" />
+
+        <TextView
+            android:id="@+id/local_music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="63dp"
+            android:text="本地音乐"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/collect_music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/local_music_title"
+            android:layout_marginStart="118dp"
+            android:text="我的收藏"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/download_music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_title"
+            android:layout_marginEnd="118dp"
+            android:text="下载管理"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/recent_music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_title"
+            android:layout_marginEnd="24dp"
+            android:text="最近播放"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/recent_music_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_count"
+            android:layout_marginEnd="53dp"
+            android:text="1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/download_music_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/local_music_count"
+            android:layout_marginEnd="150dp"
+            android:text="0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/collect_music_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/local_music_count"
+            android:layout_marginStart="149dp"
+            android:text="2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/local_music_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="90dp"
+            android:text="6"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="125dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:id="@+id/created_songlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="140dp"
+            android:text="创建的歌单"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
 
 
-    <ListView
-        android:id="@+id/collected_songlist_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/collected_songlist_title"
-        android:divider="@null" >
-    </ListView>
+        <ImageView
+            android:id="@+id/created_songlist_drop"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="144dp"
+            app:srcCompat="@drawable/shrink" />
 
-    <ImageView
-        android:id="@+id/collected_songlist_line"
-        android:layout_width="fill_parent"
-        android:layout_below="@+id/collected_songlist_title"
-        android:layout_height="2dp"
-        android:background="#FAFAFA"
-        android:visibility="visible"/>
+        <ImageView
+            android:id="@+id/add_created_songlist_btn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="140dp"
+            app:srcCompat="@drawable/add" />
 
+        <ImageView
+            android:id="@+id/manage_created_songlist_btn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="375dp"
+            android:layout_marginTop="140dp"
+            app:srcCompat="@drawable/manage" />
+
+        <ListView
+            android:id="@+id/created_songlist_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/created_songlist_title"
+            android:divider="@null"></ListView>
+
+        <ImageView
+            android:id="@+id/created_songlist_line"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/created_songlist_list_view"
+            android:background="@color/colorGray"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/collected_songlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/created_songlist_line"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="13dp"
+            android:text="收藏的歌单"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/collected_songlist_drop"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/created_songlist_line"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/drop" />
+
+        <ImageView
+            android:id="@+id/add_collected_songlist_btn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/created_songlist_line"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/add" />
+
+        <ImageView
+            android:id="@+id/manage_collected_songlist_btn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/created_songlist_line"
+            android:layout_marginStart="375dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/manage" />
+
+
+        <ListView
+            android:id="@+id/collected_songlist_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/collected_songlist_title"
+            android:divider="@null"></ListView>
+
+        <ImageView
+            android:id="@+id/collected_songlist_line"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/collected_songlist_title"
+            android:background="@color/colorGray"
+            android:visibility="visible" />
+    </RelativeLayout>
 </RelativeLayout>

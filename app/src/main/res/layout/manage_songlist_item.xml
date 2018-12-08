@@ -17,6 +17,14 @@
         android:scaleY="1.2"
         android:theme="@style/MyCheckBox"/>
 
+    <TextView
+        android:id="@+id/songlist_check_area"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_toEndOf="@+id/songlist_checkBox"
+        android:layout_toStartOf="@+id/songlist_up"
+        android:layout_marginEnd="15dp"/>
+
     <ImageView
         android:id="@+id/songlist_cover"
         android:layout_width="56dp"
@@ -55,7 +63,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="130dp"
         android:layout_marginTop="58dp"
-        android:background="#fafafa"
+        android:background="@color/colorGray"
         />
 
     <ImageView

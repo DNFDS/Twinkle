@@ -2,18 +2,14 @@ package com.example.twinkle;
 
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            getWindow().setStatusBarColor(Color.parseColor("#ffce3d3a"));
+            getWindow().setStatusBarColor(Color.parseColor("#3b95d4"));
         }
         initView();
         initContentFragment();
@@ -72,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setCurrentItem(int i){
-        Log.d("liangyue",String.valueOf(i));
         vp_content.setCurrentItem(i);
         iv_title_find_music.setSelected(false);
         iv_title_my_music.setSelected(false);

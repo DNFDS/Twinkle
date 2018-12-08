@@ -1,6 +1,8 @@
 package com.example.twinkle;
 
-public class SongList {  //歌单实体类
+import java.io.Serializable;
+
+public class SongList implements Serializable{  //歌单实体类
 
     private String SongListID;
     private String SongListName;
@@ -8,6 +10,7 @@ public class SongList {  //歌单实体类
     private String IsPrivate;
     private String UserID;
     private String Songs_count;
+    private boolean SonglistIsChecked;
 
     public String getSongListID() {
         return SongListID;
@@ -39,4 +42,10 @@ public class SongList {  //歌单实体类
     public void setUserID(String userID) { UserID = userID; }
     public String getSongs_count(){return  Songs_count;}
     public void setSongs_count(String songs_count) { Songs_count = songs_count; }
+    public boolean getSonglistIsChecked() {
+        return SonglistIsChecked;
+    }
+    public void setSonglistIsChecked(boolean songlistIsChecked) {
+        SonglistIsChecked = songlistIsChecked;
+    }
 }

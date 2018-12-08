@@ -7,10 +7,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:orientation="vertical"
         android:id="@+id/content"
-        android:background="@drawable/new_songlist_bg"
+        android:background="@drawable/delete_songlist_bg"
         android:layout_height="wrap_content">
 
         <TextView
@@ -20,34 +20,32 @@
             android:layout_centerInParent="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
-            android:text="新建歌单"
+            android:text="删除歌单"
             android:textColor="@color/colorContent"
             android:textSize="20sp" />
         <ImageView
             android:id="@+id/pop_create_songlist_line"
             android:layout_width="fill_parent"
             android:layout_below="@+id/pop_create_songlist_title"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="55dp"
             android:layout_height="1dp"
             android:background="@color/colorWhite"/>
 
-        <EditText android:id="@+id/new_songlist_eidtbox"
-            android:layout_width="270dp"
-            android:layout_height="40dp"
+        <TextView android:id="@+id/new_songlist_eidtbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_below="@+id/pop_create_songlist_title"
             android:layout_marginTop="8dp"
-            android:hint="请输入歌单名称"
-            android:textSize="20sp"
-            android:inputType="number"
-            android:background="@drawable/editbox_bg" />
+            android:text="确定删除这些歌单？"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/pop_create_songlist_vertical_line"
             android:layout_centerInParent="true"
             android:layout_width="1dp"
             android:layout_below="@+id/pop_create_songlist_title"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:layout_height="45dp"
             android:background="@color/colorWhite"/>
 

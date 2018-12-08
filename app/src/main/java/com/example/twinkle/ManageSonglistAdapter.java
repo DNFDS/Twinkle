@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements View.OnClickListener {
-    private ManageInnerItemOnclickListener mListener;
+    private InnerItemOnclickListener mListener;
     private int resourceId;
 
     public ManageSonglistAdapter(Context context, int textViewResourceId, List<SongList> objects){
@@ -29,7 +29,11 @@ public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements Vie
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.songlist_checkbox=view.findViewById (R.id.songlist_checkBox);
+            if(songlist.getSonglistIsChecked()){
+                viewHolder.songlist_checkbox.setChecked(true);
+            }
             viewHolder.songlist_cover = view.findViewById (R.id.songlist_cover);
+            viewHolder.songlist_check_area=view.findViewById (R.id.songlist_check_area);
             viewHolder.songlist_up =  view.findViewById (R.id.songlist_up);
             viewHolder.songlist_name = view.findViewById (R.id.songlist_name);
             viewHolder.songs_count = view.findViewById (R.id.songs_count);
@@ -44,6 +48,7 @@ public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements Vie
         viewHolder.songlist_up.setOnClickListener(this);
         viewHolder.songlist_checkbox.setOnClickListener(this);
         viewHolder.songlist_up.setTag(position);
+        viewHolder.songlist_check_area.setTag(position);
         viewHolder.songlist_checkbox.setTag(position);
         return view;
     }
@@ -52,13 +57,14 @@ public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements Vie
         ImageView songlist_cover;
         ImageView songlist_up;
         TextView songlist_name;
+        TextView songlist_check_area;
         TextView songs_count;
     }
-    interface ManageInnerItemOnclickListener {
+    interface InnerItemOnclickListener {
         void itemClick(View v);
     }
 
-    public void setOnInnerItemOnClickListener(ManageInnerItemOnclickListener listener){
+    public void setOnInnerItemOnClickListener(InnerItemOnclickListener listener){
         this.mListener=listener;
     }
 
