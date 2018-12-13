@@ -3,8 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/colorWhite"
-    android:descendantFocusability="blocksDescendants">
+    android:background="@color/colorWhite">
+
+    <CheckBox
+        android:id="@+id/songlist_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/songlist_name"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:theme="@style/MyCheckBox"/>
+
+    <TextView
+        android:id="@+id/songlist_check_area"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_toEndOf="@+id/songlist_checkBox"
+        android:layout_toStartOf="@+id/songlist_up"
+        android:layout_marginEnd="15dp"/>
 
     <ImageView
         android:id="@+id/songlist_cover"
@@ -12,8 +31,9 @@
         android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="2dp" />
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="2dp"
+        app:srcCompat="@drawable/cover"/>
 
     <TextView
         android:id="@+id/songlist_name"
@@ -21,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/colorContent"
         android:textSize="16sp" />
@@ -32,26 +52,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="34dp"
         android:textSize="12sp" />
 
     <ImageView
         android:layout_width="330dp"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="58dp"
         android:background="@color/colorGray"
         />
 
     <ImageView
-        android:id="@+id/songlist_operate"
+        android:id="@+id/songlist_up"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
         app:srcCompat="@drawable/operate" />
+
 </RelativeLayout>

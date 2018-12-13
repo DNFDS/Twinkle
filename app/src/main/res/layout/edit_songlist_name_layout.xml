@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorWhite">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/content"
+        android:background="@color/colorBlue"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:id="@+id/edit_songlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="40dp"
+            android:text="编辑歌单名称"
+            android:textColor="@color/colorTabBg"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:text="保存"
+            android:textColor="@color/colorTabBg"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corners_bg"
+        android:layout_height="match_parent">
+
+        <EditText android:id="@+id/change_songlist_name_editbox"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:hint="请输入歌单名称"
+            android:textSize="18sp"
+            android:inputType="number"
+            android:background="@drawable/editbox_bg" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            app:srcCompat="@drawable/cross" />
+
+        <ImageView
+            android:id="@+id/pop_change_description_line"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/change_songlist_name_editbox"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+    </RelativeLayout>
+</RelativeLayout>

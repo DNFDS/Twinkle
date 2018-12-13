@@ -16,8 +16,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SongListActivity" />
-        <activity android:name=".PlayerActivity"></activity>
+        <activity
+            android:name=".ManageSonglistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditSonglistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditSonglistNameActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShareSonglistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

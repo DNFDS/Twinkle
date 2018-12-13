@@ -2,7 +2,7 @@ package com.example.twinkle;
 
 public class Song {  //大势实体类
 
-    private int SongID;
+    private String SongID;
     private String SongPath;
     private String SongName;
     private String WriterName;
@@ -13,16 +13,10 @@ public class Song {  //大势实体类
     private String AlbumID;
     private String SongSchool;
     private String SongAge;
-
-    public Song (int ID, String name){
-        this.SongID = ID;
-        this.SongName = name;
-    }
-
-    public int getSongID() {
+    public String getSongID() {
         return SongID;
     }
-    public void setSongID(int songID) {
+    public void setSongID(String songID) {
         SongID = songID;
     }
     public String getSongPath() {

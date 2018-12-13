@@ -1,19 +1,18 @@
 package com.example.twinkle;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,ViewPager.OnPageChangeListener{
@@ -24,16 +23,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView iv_title_friends;
     private ViewPager vp_content;
     private Toolbar toolbars;
+    private List<SongList> songListList = new ArrayList<SongList>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            getWindow().setStatusBarColor(Color.parseColor("#ffce3d3a"));
+            getWindow().setStatusBarColor(Color.parseColor("#008df2"));
         }
-
         initView();
         initContentFragment();
     }
@@ -49,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iv_title_find_music.setOnClickListener(this);
         iv_title_my_music.setOnClickListener(this);
         iv_title_friends.setOnClickListener(this);
+
     }
 
     private void initContentFragment(){
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vp_content.setAdapter(adapter);
         vp_content.setOffscreenPageLimit(2);
         vp_content.addOnPageChangeListener(this);
-
         setSupportActionBar(toolbars);
         ActionBar actionBar =getSupportActionBar();
         if(actionBar!=null){
@@ -119,13 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setCurrentItem(2);
                 }
                 break;
-
-//            case R.id.imageView: {
-//                Intent intent = new Intent(MainActivity.this,SongListActivity.class);
-//                intent.putExtra("SongListName","LocalSongList");
-//                startActivity(intent);
-//            }
-//                break;
         }
     }
 }

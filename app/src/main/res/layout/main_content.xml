@@ -13,49 +13,71 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbars"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/colorTheme"
         app:contentInsetStart="0dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-            <ImageView android:id="@+id/iv_title_personal_message"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:layout_marginRight="71dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+             <ImageView android:id="@+id/iv_title_personal_message"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/titlebar_video" />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView android:id="@+id/iv_title_find_music"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:padding="15dp"
-                    android:src="@drawable/titlebar_news" />
-                <ImageView android:id="@+id/iv_title_my_music"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="13dp"
-                    android:src="@drawable/titlebar_movie" />
-                <ImageView android:id="@+id/iv_title_friends"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:padding="15dp"
-                    android:src="@drawable/titlebar_video" />
-            </LinearLayout>
+            <ImageView android:id="@+id/iv_title_find_music"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_toStartOf="@+id/iv_title_my_music"
+                android:layout_marginEnd="40dp"
+                android:layout_alignTop="@+id/iv_title_personal_message"
+                android:src="@drawable/titlebar_news" />
+            <ImageView android:id="@+id/iv_title_my_music"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/titlebar_movie" />
+            <ImageView android:id="@+id/iv_title_friends"
+                android:layout_width="27dp"
+                android:layout_toEndOf="@+id/iv_title_my_music"
+                android:layout_alignTop="@+id/iv_title_personal_message"
+                android:layout_marginStart="40dp"
+                android:layout_height="27dp"
+                android:src="@drawable/titlebar_video" />
             <ImageView android:id="@+id/iv_title_more"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:layout_marginLeft="71dp"
+                android:layout_width="27dp"
+                android:layout_alignTop="@+id/iv_title_personal_message"
+                android:layout_alignParentEnd="true"
+                android:layout_height="27dp"
+                android:layout_marginEnd="20dp"
                 android:src="@drawable/titlebar_video" />
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/search_title_image"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_below="@+id/iv_title_personal_message"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/search_title_bg" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索"
+                android:textSize="16sp"
+                android:layout_below="@+id/iv_title_personal_message"
+                android:layout_marginTop="18dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#7cccff"/>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <FrameLayout
         android:layout_width="match_parent"

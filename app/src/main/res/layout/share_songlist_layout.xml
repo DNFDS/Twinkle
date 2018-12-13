@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#fafafa">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/content"
+        android:background="@color/colorBlue"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:id="@+id/edit_songlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="40dp"
+            android:text="分享到动态"
+            android:textColor="@color/colorTabBg"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/share_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:text="分享"
+            android:textColor="@color/colorTabBg"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:layout_height="wrap_content">
+
+        <EditText android:id="@+id/share_songlist_comment_eidtbox"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:minLines="4"
+            android:gravity="top"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:hint="说点什么吧"
+            android:textSize="18sp"
+            android:inputType="number"
+            android:background="@drawable/editbox_bg" />
+
+        <ImageView
+            android:id="@+id/add_image_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/share_songlist_comment_eidtbox"
+            android:layout_alignStart="@+id/share_songlist_comment_eidtbox"
+            app:srcCompat="@drawable/add_image" />
+
+        <ImageView
+            android:id="@+id/pop_share_songlist_line"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/add_image_btn"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+
+        <ImageView
+            android:id="@+id/songlist_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/pop_share_songlist_line"
+            android:layout_marginTop="10dp"
+            android:layout_alignStart="@+id/share_songlist_comment_eidtbox"
+            app:srcCompat="@drawable/cover" />
+
+        <TextView
+            android:id="@+id/songlist_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pop_share_songlist_line"
+            android:layout_toEndOf="@+id/songlist_cover"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="分享"
+            android:textColor="@color/colorContent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/songlist_creator_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/songlist_name_title"
+            android:layout_toEndOf="@+id/songlist_cover"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:text="创建者：梁月哥哥"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/pop_share_songlist_end_line"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/songlist_cover"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/colorWhite" />
+    </RelativeLayout>
+</RelativeLayout>

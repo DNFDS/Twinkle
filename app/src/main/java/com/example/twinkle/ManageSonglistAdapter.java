@@ -5,39 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class SonglistAdapter extends ArrayAdapter<SongList> implements View.OnClickListener {
-    private List<SongList> songListList;
+public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements View.OnClickListener {
     private InnerItemOnclickListener mListener;
     private int resourceId;
-    private boolean Isdrop;
 
-    public SonglistAdapter(Context context, int textViewResourceId,List<SongList> objects){
+    public ManageSonglistAdapter(Context context, int textViewResourceId, List<SongList> objects){
         super(context,textViewResourceId,objects);
         resourceId=textViewResourceId;
-        songListList=objects;
     }
-
-    public void setIsdrop(boolean isdrop ){
-        Isdrop=isdrop;
-    }
-    public boolean getIsdrop(){
-        return Isdrop;
-    }
-    @Override
-    public int getCount() {
-        // 重点区域
-        if (Isdrop) {
-            return songListList.size();
-        } else {
-            return 0;
-        }
-    }
-
 
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
@@ -47,8 +28,13 @@ public class SonglistAdapter extends ArrayAdapter<SongList> implements View.OnCl
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             viewHolder = new ViewHolder();
+            viewHolder.songlist_checkbox=view.findViewById (R.id.songlist_checkBox);
+            if(songlist.getSonglistIsChecked()){
+                viewHolder.songlist_checkbox.setChecked(true);
+            }
             viewHolder.songlist_cover = view.findViewById (R.id.songlist_cover);
-            viewHolder.songlist_operate =  view.findViewById (R.id.songlist_operate);
+            viewHolder.songlist_check_area=view.findViewById (R.id.songlist_check_area);
+            viewHolder.songlist_up =  view.findViewById (R.id.songlist_up);
             viewHolder.songlist_name = view.findViewById (R.id.songlist_name);
             viewHolder.songs_count = view.findViewById (R.id.songs_count);
             view.setTag(viewHolder); // 将ViewHolder存储在View中
@@ -59,14 +45,20 @@ public class SonglistAdapter extends ArrayAdapter<SongList> implements View.OnCl
         viewHolder.songlist_cover.setImageResource(songlist.getSongListImageId());
         viewHolder.songlist_name.setText(songlist.getSongListName());
         viewHolder.songs_count.setText(songlist.getSongs_count());
-        viewHolder.songlist_operate.setOnClickListener(this);
-        viewHolder.songlist_operate.setTag(position);
+        viewHolder.songlist_up.setOnClickListener(this);
+        viewHolder.songlist_checkbox.setOnClickListener(this);
+        viewHolder.songlist_check_area.setOnClickListener(this);
+        viewHolder.songlist_up.setTag(position);
+        viewHolder.songlist_check_area.setTag(position);
+        viewHolder.songlist_checkbox.setTag(position);
         return view;
     }
     class ViewHolder {
+        CheckBox songlist_checkbox;
         ImageView songlist_cover;
-        ImageView songlist_operate;
+        ImageView songlist_up;
         TextView songlist_name;
+        TextView songlist_check_area;
         TextView songs_count;
     }
     interface InnerItemOnclickListener {
