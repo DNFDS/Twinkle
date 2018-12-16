@@ -49,6 +49,11 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
     private SonglistAdapter created_songlistAdapter;
     private SonglistAdapter collected_songlistAdapter;
 
+    private ImageView local_songlist_imageView;
+    private ImageView collected_songlist_imageview;
+    private ImageView download_songlist_imageview;
+    private ImageView recent_songlist_imageview;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mymusicView = inflater.inflate(R.layout.fg_my_music, container, false);
@@ -111,6 +116,47 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
                 }
             }
         });
+        //本地/收藏/下载/播放 列表图片
+        local_songlist_imageView = (ImageView)mymusicView.findViewById(R.id.local_song_imageView);
+        local_songlist_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SongListShowActivity.class);
+                intent.putExtra("SongListToShow","Local");
+                startActivity(intent);
+            }
+        });
+
+        collected_songlist_imageview = (ImageView)mymusicView.findViewById(R.id.collect_song_imageView);
+        collected_songlist_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SongListShowActivity.class);
+                intent.putExtra("SongListToShow","Stars");
+                startActivity(intent);
+            }
+        });
+
+        download_songlist_imageview = (ImageView)mymusicView.findViewById(R.id.download_song_imageView);
+        download_songlist_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SongListShowActivity.class);
+                intent.putExtra("SongListToShow","Downloads");
+                startActivity(intent);
+            }
+        });
+
+        recent_songlist_imageview = (ImageView)mymusicView.findViewById(R.id.recent_song_imageView);
+        recent_songlist_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SongListShowActivity.class);
+                intent.putExtra("SongListToShow","Recent");
+                startActivity(intent);
+            }
+        });
+
         //初始化弹窗
         initPopwindow();
     }

@@ -16,35 +16,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ManageSonglistActivity">
+        <activity android:name=".ManageSonglistActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT"></category>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".EditSonglistActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT"></category>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".EditSonglistNameActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT"></category>
 
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ShareSonglistActivity">
+        <activity android:name=".EditSonglistActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT"></category>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".EditSonglistNameActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ShareSonglistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SongListShowActivity"></activity>
     </application>
 
 </manifest>

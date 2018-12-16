@@ -1,0 +1,61 @@
+package com.example.twinkle;
+
+import android.content.Context;
+import android.nfc.Tag;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class SingleSongAdapter extends RecyclerView.Adapter<SingleSongAdapter.SingleSongViewHolder> {
+    //目前只是以静态类模拟歌单存储功能
+    //与数据库连接后需要改动
+    @NonNull
+    private Context mContext;
+    private ArrayList<Song> showingSongs = null;
+
+    public SingleSongAdapter(String SongListToShow, Context context) {
+        this.mContext = context;
+        showingSongs = StaticSongList.getSongListByName(SongListToShow);
+    }
+
+    @Override
+    public SingleSongAdapter.SingleSongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int layoutId) {
+        return new SingleSongViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_single_song, parent,false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SingleSongViewHolder viewHolder, int position) {
+//        Log.d("check123",showingSongs.get(position).getSongName().toString());
+
+        viewHolder.numShow.setText(showingSongs.get(position).getSongID() + "");
+        viewHolder.nameShow.setText(showingSongs.get(position).getSongName());
+        viewHolder.messageShow.setText(showingSongs.get(position).getSingerName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return showingSongs.size();
+    }
+
+    class SingleSongViewHolder extends RecyclerView.ViewHolder{
+        private TextView numShow = null;
+        private TextView nameShow = null;
+        private TextView messageShow = null;
+
+
+        public SingleSongViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            numShow = (TextView)itemView.findViewById(R.id.song_num_textView);
+            nameShow = (TextView)itemView.findViewById(R.id.song_name_textView);
+            messageShow = (TextView)itemView.findViewById(R.id.song_message_textView);
+        }
+    }
+}

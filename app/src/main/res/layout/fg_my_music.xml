@@ -107,7 +107,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/local_music_imageView"
+            android:id="@+id/local_song_imageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
@@ -117,29 +117,29 @@
             app:srcCompat="@drawable/local_music" />
 
         <ImageView
-            android:id="@+id/collect_music_imageView"
+            android:id="@+id/collect_song_imageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_alignTop="@+id/local_song_imageView"
             android:layout_marginStart="133dp"
             app:srcCompat="@drawable/like" />
 
         <ImageView
-            android:id="@+id/download_music_imageView"
+            android:id="@+id/download_song_imageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_alignTop="@+id/local_song_imageView"
             android:layout_marginEnd="135dp"
             app:srcCompat="@drawable/download" />
 
         <ImageView
-            android:id="@+id/recent_music_imageView"
+            android:id="@+id/recent_song_imageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/local_music_imageView"
+            android:layout_alignTop="@+id/local_song_imageView"
             android:layout_marginEnd="38dp"
             app:srcCompat="@drawable/recent" />
 

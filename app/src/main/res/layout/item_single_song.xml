@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#cfcfcf">
+
+
+    <RelativeLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/song_num_textView"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/song_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_toEndOf="@+id/song_num_textView"
+            android:padding="2dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:text="NAME" />
+
+        <TextView
+            android:id="@+id/song_message_textView"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@+id/song_num_textView"
+            android:layout_below="@+id/song_name_textView"
+            android:padding="2dp"
+            android:gravity="center_vertical"
+            android:textSize="10sp"
+            android:text="MESSAGE" />
+
+    </RelativeLayout>
+
+</LinearLayout>

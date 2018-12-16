@@ -2,21 +2,32 @@ package com.example.twinkle;
 
 public class Song {  //大势实体类
 
-    private String SongID;
+    private int SongID;
     private String SongPath;
     private String SongName;
-    private String WriterName;
-    private String ProducerName;
+    private String SingerName;
     private String SongImage;
     private String Length;
-    private int Playtimes;
+    private int PlayTimes;
     private String AlbumID;
     private String SongSchool;
     private String SongAge;
-    public String getSongID() {
+
+    public Song (int ID, String name){
+        this.SongID = ID;
+        this.SongName = name;
+    }
+
+    public Song (int ID, String name, String singerName){
+        this.SongID = ID;
+        this.SongName = name;
+        this.SingerName = singerName;
+    }
+
+    public int getSongID() {
         return SongID;
     }
-    public void setSongID(String songID) {
+    public void setSongID(int songID) {
         SongID = songID;
     }
     public String getSongPath() {
@@ -31,17 +42,11 @@ public class Song {  //大势实体类
     public void setSongName(String songName) {
         SongName = songName;
     }
-    public String getWriterName() {
-        return WriterName;
+    public String getSingerName() {
+        return SingerName;
     }
-    public void setWriterName(String writerName) {
-        WriterName = writerName;
-    }
-    public String getProducerName() {
-        return ProducerName;
-    }
-    public void setProducerName(String producerName) {
-        ProducerName = producerName;
+    public void setSingerName(String singerName) {
+        SingerName = singerName;
     }
     public String getSongImage() {
         return SongImage;
@@ -55,11 +60,11 @@ public class Song {  //大势实体类
     public void setLength(String length) {
         Length = length;
     }
-    public int getPlaytimes() {
-        return Playtimes;
+    public int getPlayTimes() {
+        return PlayTimes;
     }
-    public void setPlaytimes(int playtimes) {
-        Playtimes = playtimes;
+    public void setPlayTimes(int playTimes) {
+        PlayTimes = playTimes;
     }
     public String getAlbumID() {
         return AlbumID;
