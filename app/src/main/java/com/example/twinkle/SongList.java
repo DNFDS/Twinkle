@@ -9,9 +9,16 @@ public class SongList implements Serializable{  //歌单实体类
     private int SongListImageId;
     private String IsPrivate;
     private String UserID;
+    private String UserName;
     private String Songs_count;
     private boolean SonglistIsChecked;
 
+    public String getUserName() {
+        return UserName;
+    }
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
     public String getSongListID() {
         return SongListID;
     }

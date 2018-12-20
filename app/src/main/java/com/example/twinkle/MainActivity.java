@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            getWindow().setStatusBarColor(Color.parseColor("#3b95d4"));
+            getWindow().setStatusBarColor(Color.parseColor("#008df2"));
         }
         initView();
         initContentFragment();

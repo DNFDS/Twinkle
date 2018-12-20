@@ -47,6 +47,7 @@ public class ManageSonglistAdapter extends ArrayAdapter<SongList> implements Vie
         viewHolder.songs_count.setText(songlist.getSongs_count());
         viewHolder.songlist_up.setOnClickListener(this);
         viewHolder.songlist_checkbox.setOnClickListener(this);
+        viewHolder.songlist_check_area.setOnClickListener(this);
         viewHolder.songlist_up.setTag(position);
         viewHolder.songlist_check_area.setTag(position);
         viewHolder.songlist_checkbox.setTag(position);

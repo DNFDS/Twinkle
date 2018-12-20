@@ -33,8 +33,7 @@ import java.util.List;
 public class FgMymusicFragment extends Fragment implements InnerItemOnclickListener, OnItemClickListener{
     private List<SongList> created_songListList = new ArrayList<SongList>();
     private List<SongList> collected_songListList = new ArrayList<SongList>();
-    private String currentSonglistName;
-
+    private int currentPosition;
     private ImageView created_songlist_drop;
     private ImageView collected_songlist_drop;
     private ImageView created_songlist_line;
@@ -120,21 +119,25 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
         songList1.setSongListName("我喜欢的音乐");
         songList1.setSongListImageId(R.drawable.cover);
         songList1.setSongs_count("18首");
+        songList1.setUserName("梁月");
         created_songListList.add(songList1);
         SongList songList2 = new SongList();
         songList2.setSongListName("temp");
         songList2.setSongListImageId(R.drawable.cover);
         songList2.setSongs_count("18首");
+        songList1.setUserName("梁月");
         created_songListList.add(songList2);
         SongList songList3 = new SongList();
         songList3.setSongListName("code");
         songList3.setSongListImageId(R.drawable.cover);
         songList3.setSongs_count("18首");
+        songList1.setUserName("梁月");
         created_songListList.add(songList3);
         SongList songList4 = new SongList();
         songList4.setSongListName("电音");
         songList4.setSongListImageId(R.drawable.cover);
         songList4.setSongs_count("18首");
+        songList1.setUserName("梁月");
         created_songListList.add(songList4);
 
         SongList songList5 = new SongList();
@@ -165,7 +168,7 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
         position = (Integer) v.getTag();
         switch (v.getId()) {
             case R.id.songlist_operate:
-                currentSonglistName=created_songListList.get(position).getSongListName();
+                currentPosition=position;
                 showPopWindow();
                 setBackgroundAlpha(0.7f);
                 break;
@@ -176,7 +179,7 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        currentSonglistName = (String) ((TextView)view.findViewById(R.id.songlist_name)).getText();
+        currentPosition=position;
     }
 
     //初始化底部弹窗
@@ -215,17 +218,9 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
             public void onClick(View v) {
                 popupWindow.dismiss();
                 Intent intent = new Intent(getActivity(),ShareSonglistActivity.class);
-                intent.putExtra("songlist_name",currentSonglistName);
-                String songlist_creator="";
-                for(int i = 0;i < created_songListList.size(); i ++){
-                    if(created_songListList.get(i).getSongListName()==currentSonglistName){
-                       // songlist_creator=created_songListList.get(i).getUserID();
-                        songlist_creator="梁月";
-                    }
-                }
-                intent.putExtra("songlist_creator",songlist_creator);
+                intent.putExtra("songlist",created_songListList.get(currentPosition));
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                getActivity().overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out);
             }
         });
         //跳转到编辑歌单信息活动
@@ -235,9 +230,10 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
             public void onClick(View v) {
                 popupWindow.dismiss();
                 Intent intent = new Intent(getActivity(),EditSonglistActivity.class);
-                intent.putExtra("songlist_name",currentSonglistName);
-                startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                intent.putExtra("songlist",created_songListList.get(currentPosition));
+                intent.putExtra("Position",currentPosition+"");
+                getActivity().startActivityForResult(intent, 1);
+                getActivity().overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out);
             }
         });
         //新建歌单弹窗
@@ -267,7 +263,7 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
                 newsonglistEditText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 newsonglistEditText .setImeOptions(EditorInfo.IME_ACTION_DONE);
                 newsonglistEditText.setFocusable(true);
-                newsonglistEditText.setFocusableInTouchMode(true);;
+                newsonglistEditText.setFocusableInTouchMode(true);
                 InputMethodManager inputManager = (InputMethodManager)newsonglistEditText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 newsonglistEditText.requestFocus();
                 inputManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
@@ -286,10 +282,10 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
         manage_songlist_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ManageSonglistActivity.class);
-                intent.putExtra("songListList",(Serializable) (created_songListList));//key就是自己定义一个String的字符串就行了
-                startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                Intent intent = new Intent(getContext(),ManageSonglistActivity.class);
+                intent.putExtra("songListList",(Serializable) (created_songListList));
+                getActivity().startActivityForResult(intent, 1);
+                getActivity().overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out);
             }
         });
     }
@@ -298,7 +294,7 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
     private void showPopWindow() {
         View rootview = LayoutInflater.from(this.getActivity()).inflate(R.layout.activity_main, null);
         TextView songlist_name =popupView.findViewById(R.id.pop_songlist_title);
-        String pop_songlist_title="歌单："+currentSonglistName;
+        String pop_songlist_title="歌单："+created_songListList.get(currentPosition).getSongListName();
         songlist_name.setText(pop_songlist_title);
         popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
@@ -306,6 +302,20 @@ public class FgMymusicFragment extends Fragment implements InnerItemOnclickListe
     private void showNewSonglistWindow() {
         View rootview = LayoutInflater.from(this.getActivity()).inflate(R.layout.activity_main, null);
         newsonglistWindow.showAtLocation(rootview, Gravity.TOP, 0, 100);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String option=data.getStringExtra("Option");
+        switch (option) {
+            case "delete":
+                break;
+            case "edit":
+                break;
+            default:
+
+        }
     }
 
     //调整屏幕亮度

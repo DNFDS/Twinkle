@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/user_div"
         android:layout_width="match_parent"
@@ -350,5 +352,6 @@
             android:layout_below="@+id/collected_songlist_title"
             android:background="@color/colorGray"
             android:visibility="visible" />
+    </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

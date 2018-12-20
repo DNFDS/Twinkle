@@ -35,11 +35,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_START" />
                 <category android:name="android.intent.category.DEFAULT"></category>
-
             </intent-filter>
         </activity>
         <activity
             android:name=".ShareSonglistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewsDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShareNewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_START" />
                 <category android:name="android.intent.category.DEFAULT"></category>

@@ -6,7 +6,7 @@ public class User {  //用户实体类
     private String UserName;
     private String UserPassword;
     private String Password_old;
-    private String UserImage;
+    private int UserImage;
     private String UserSex;
     private boolean Sex;
     private char IsVIP;
@@ -45,11 +45,11 @@ public class User {  //用户实体类
         Password_old = password_old;
     }
 
-    public String getUserImage() {
+    public int getUserImage() {
         return UserImage;
     }
 
-    public void setUserImage(String userImage) {
+    public void setUserImage(int userImage) {
         UserImage = userImage;
     }
 

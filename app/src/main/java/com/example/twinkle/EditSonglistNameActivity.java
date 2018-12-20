@@ -17,13 +17,14 @@ import java.util.TimerTask;
 public class EditSonglistNameActivity extends AppCompatActivity {
     private EditText change_name_editbox;
 
+    private SongList songlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_songlist_name_layout);
-        String songlist_name=getIntent().getStringExtra("songlist_name");
+        songlist=(SongList)getIntent().getSerializableExtra("songlist");
         change_name_editbox =findViewById(R.id.change_songlist_name_editbox);
-        change_name_editbox.setText(songlist_name);
+        change_name_editbox.setText(songlist.getSongListName());
         change_name_editbox.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         change_name_editbox .setImeOptions(EditorInfo.IME_ACTION_DONE);
         change_name_editbox.setFocusable(true);
@@ -43,7 +44,7 @@ public class EditSonglistNameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                overridePendingTransition(R.anim.left_slide_in, R.anim.right_slide_out);
             }
         });
         ImageView edit_songlist_name_delete=findViewById(R.id.delete);
@@ -59,10 +60,15 @@ public class EditSonglistNameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(change_name_editbox.getText().toString().equals("")==false){
                     finish();
-                    overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                    overridePendingTransition(R.anim.left_slide_in, R.anim.right_slide_out);
                 }
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.left_slide_in, R.anim.right_slide_out);
+    }
 }

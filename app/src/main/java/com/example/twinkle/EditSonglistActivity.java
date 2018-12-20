@@ -9,20 +9,21 @@ import android.widget.TextView;
 
 public class EditSonglistActivity extends AppCompatActivity {
 
-    private String songlist_name;
+    private SongList songlist;
+    private String position_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_songlist_layout);
-        songlist_name=getIntent().getStringExtra("songlist_name");
+        songlist=(SongList)getIntent().getSerializableExtra("songlist");
+        position_str=getIntent().getStringExtra("Position");
         TextView change_name_name =findViewById(R.id.change_name_name);
-        change_name_name.setText(songlist_name);
+        change_name_name.setText(songlist.getSongListName());
         ImageView edit_songlist_back=findViewById(R.id.back);
         edit_songlist_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                finish_activity("back");
             }
         });
         TextView edit_songlist_name=findViewById(R.id.change_name_btn_area);
@@ -30,11 +31,24 @@ public class EditSonglistActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditSonglistActivity.this,EditSonglistNameActivity.class);
-                intent.putExtra("songlist_name",songlist_name);//key就是自己定义一个String的字符串就行了
+                intent.putExtra("songlist",songlist);
                 startActivity(intent);
-                overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out);
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish_activity("back");
+    }
+
+    private void finish_activity(String option){
+        Intent intent = new Intent();
+        intent.putExtra("Option", option);
+        intent.putExtra("Position", position_str);
+        setResult(RESULT_OK, intent);
+        finish();
+        overridePendingTransition(R.anim.left_slide_in, R.anim.right_slide_out);
+    }
 }

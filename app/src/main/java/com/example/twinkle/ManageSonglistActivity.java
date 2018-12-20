@@ -1,9 +1,9 @@
 package com.example.twinkle;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +19,12 @@ import android.widget.TextView;
 
 import com.example.twinkle.ManageSonglistAdapter.InnerItemOnclickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ManageSonglistActivity extends AppCompatActivity implements OnItemClickListener,InnerItemOnclickListener{
-    private List<SongList> songListList = new ArrayList<SongList>();
+public class ManageSonglistActivity extends AppCompatActivity implements InnerItemOnclickListener,OnItemClickListener{
+    private List<SongList> songListList;
     private View popupView;
+    private int select_all_times=0;
     private ListView manage_songlist;
     private PopupWindow popupWindow;
     private ManageSonglistAdapter manage_songlistAdapter;
@@ -34,28 +34,51 @@ public class ManageSonglistActivity extends AppCompatActivity implements OnItemC
         setContentView(R.layout.manage_songlist_layout);
         manage_songlist = findViewById(R.id.manage_songlist_list_view);
         songListList = (List<SongList>)getIntent().getSerializableExtra("songListList");
-        for(int i=0;i<songListList.size();i++){
-            songListList.get(i).setSonglistIsChecked(false);
-        }
         manage_songlistAdapter = new ManageSonglistAdapter(this, R.layout.manage_songlist_item, songListList);
         manage_songlistAdapter.setOnInnerItemOnClickListener(this);
         manage_songlist.setAdapter(manage_songlistAdapter);
         manage_songlist.setOnItemClickListener(this);
         ImageView manage_songlist_back=findViewById(R.id.back);
+        TextView select_all=findViewById(R.id.select_all);
         manage_songlist_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                finish_activity("back");
+            }
+        });
+        select_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(select_all_times==0){
+                    for(int i=0;i<songListList.size();i++) {
+                        songListList.get(i).setSonglistIsChecked(true);
+                        CheckBox temp_checkbox = manage_songlist.getChildAt(i).findViewById(R.id.songlist_checkBox);
+                        temp_checkbox.setChecked(true);
+                    }
+                    select_all_times=1;
+                }
+                else{
+                    for(int i=0;i<songListList.size();i++) {
+                        songListList.get(i).setSonglistIsChecked(false);
+                        CheckBox temp_checkbox = manage_songlist.getChildAt(i).findViewById(R.id.songlist_checkBox);
+                        temp_checkbox.setChecked(false);
+                    }
+                    select_all_times=0;
+                }
             }
         });
         initPopwindow();
-        TextView delete_songlist_back=findViewById(R.id.delete_btn_area);
-        delete_songlist_back.setOnClickListener(new View.OnClickListener() {
+        TextView delete_btn=findViewById(R.id.delete_btn_area);
+        delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopWindow();
-                setBackgroundAlpha(0.7f);
+                for(int i=0;i<songListList.size();i++) {
+                    if(songListList.get(i).getSonglistIsChecked()) {
+                        showPopWindow();
+                        setBackgroundAlpha(0.7f);
+                        break;
+                    }
+                }
             }
         });
     }
@@ -85,8 +108,7 @@ public class ManageSonglistActivity extends AppCompatActivity implements OnItemC
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                finish();
-                overridePendingTransition(R.anim.push_fade_out, R.anim.push_fade_in);
+                finish_activity("delete");
             }
         });
     }
@@ -117,18 +139,20 @@ public class ManageSonglistActivity extends AppCompatActivity implements OnItemC
 
     private void setcheckbox(int position){
         if(songListList.get(position).getSonglistIsChecked()) {
-            songListList.get(position).setSonglistIsChecked(true);
-        }else{
             songListList.get(position).setSonglistIsChecked(false);
+            CheckBox temp_checkbox= manage_songlist.getChildAt(position).findViewById(R.id.songlist_checkBox);
+            temp_checkbox.setChecked(false);
+        }else{
+            songListList.get(position).setSonglistIsChecked(true);
+            CheckBox temp_checkbox= manage_songlist.getChildAt(position).findViewById(R.id.songlist_checkBox);
+            temp_checkbox.setChecked(true);
         }
-        manage_songlistAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void itemClick(View v) {
         int position;
         position = (Integer) v.getTag();
-        Log.d("两月",String.valueOf(position));
         switch (v.getId()) {
             case R.id.songlist_check_area:
                 setcheckbox(position);
@@ -139,5 +163,18 @@ public class ManageSonglistActivity extends AppCompatActivity implements OnItemC
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish_activity("back");
+    }
+
+    private void finish_activity(String option){
+        Intent intent = new Intent();
+        intent.putExtra("Option", option);
+        setResult(RESULT_OK, intent);
+        finish();
+        overridePendingTransition(R.anim.left_slide_in, R.anim.right_slide_out);
     }
 }
