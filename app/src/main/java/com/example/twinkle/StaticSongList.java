@@ -9,6 +9,9 @@ public class StaticSongList {
     static public ArrayList<Song> musicList_History = new ArrayList<Song>();
 
     public static void Init(){
+
+        if (musicList_Local.size()!=0) return;
+
         musicList_Local.add(new Song(1,"POP/STARS","Madison Beer"));
         musicList_Local.add(new Song(2,"Until You","Shayne Ward"));
         musicList_Local.add(new Song(3,"Cornfield Chase","Hans Zimmer"));

@@ -19,6 +19,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //快速定位滑轮
+        maven{url "http://jitpack.io"}
     }
 }
 

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,11 @@ public class SingleSongAdapter extends RecyclerView.Adapter<SingleSongAdapter.Si
 
     public SingleSongAdapter(String SongListToShow, Context context) {
         this.mContext = context;
-        showingSongs = StaticSongList.getSongListByName(SongListToShow);
+
+        if(SongListToShow.equals("Local"))
+            showingSongs = StaticSongList.getSongListByName("Local");
+
+        Log.d("check123",getItemCount()+"");
     }
 
     @Override
@@ -32,7 +35,6 @@ public class SingleSongAdapter extends RecyclerView.Adapter<SingleSongAdapter.Si
 
     @Override
     public void onBindViewHolder(@NonNull SingleSongViewHolder viewHolder, int position) {
-//        Log.d("check123",showingSongs.get(position).getSongName().toString());
 
         viewHolder.numShow.setText(showingSongs.get(position).getSongID() + "");
         viewHolder.nameShow.setText(showingSongs.get(position).getSongName());
