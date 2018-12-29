@@ -11,20 +11,28 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SingleSongAdapter extends RecyclerView.Adapter<SingleSongAdapter.SingleSongViewHolder> {
     //目前只是以静态类模拟歌单存储功能
     //与数据库连接后需要改动
     @NonNull
     private Context mContext;
-    private ArrayList<Song> showingSongs = null;
+//    private ArrayList<Song> showingSongs = null;
+    private List<SongListShowActivity.MusicInfo> showingSongs = null;
 
-    public SingleSongAdapter(String SongListToShow, Context context) {
+//    public SingleSongAdapter(String SongListToShow, Context context) {
+//        this.mContext = context;
+//
+//        if(SongListToShow.equals("Local"))
+//            showingSongs = StaticSongList.getSongListByName("Local");
+//
+//        Log.d("check123",getItemCount()+"");
+//    }
+
+    public SingleSongAdapter(List<SongListShowActivity.MusicInfo> songList, Context context) {
         this.mContext = context;
-
-        if(SongListToShow.equals("Local"))
-            showingSongs = StaticSongList.getSongListByName("Local");
-
+        showingSongs = songList;
         Log.d("check123",getItemCount()+"");
     }
 
@@ -36,9 +44,13 @@ public class SingleSongAdapter extends RecyclerView.Adapter<SingleSongAdapter.Si
     @Override
     public void onBindViewHolder(@NonNull SingleSongViewHolder viewHolder, int position) {
 
-        viewHolder.numShow.setText(showingSongs.get(position).getSongID() + "");
-        viewHolder.nameShow.setText(showingSongs.get(position).getSongName());
-        viewHolder.messageShow.setText(showingSongs.get(position).getSingerName());
+//        viewHolder.numShow.setText(showingSongs.get(position).getSongID() + "");
+//        viewHolder.nameShow.setText(showingSongs.get(position).getSongName());
+//        viewHolder.messageShow.setText(showingSongs.get(position).getSingerName());
+
+        viewHolder.numShow.setText(showingSongs.get(position).ID + "");
+        viewHolder.nameShow.setText(showingSongs.get(position).name);
+        viewHolder.messageShow.setText(showingSongs.get(position).Artist);
     }
 
     @Override

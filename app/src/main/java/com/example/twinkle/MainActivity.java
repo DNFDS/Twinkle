@@ -1,6 +1,8 @@
 package com.example.twinkle;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -16,6 +19,8 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,ViewPager.OnPageChangeListener{
+
+    private ImageView iv_title_personal_message;
 
     private View view_status;
     private ImageView iv_title_find_music;
@@ -47,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iv_title_find_music.setOnClickListener(this);
         iv_title_my_music.setOnClickListener(this);
         iv_title_friends.setOnClickListener(this);
+
+
+        iv_title_personal_message = (ImageView)findViewById(R.id.iv_title_personal_message);
+        iv_title_personal_message.setOnClickListener(this);
 
     }
 
@@ -117,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setCurrentItem(2);
                 }
                 break;
+            case R.id.iv_title_personal_message:
+            {
+                Log.d("PlayerActivity","onClick");
+                Intent intent = new Intent(this,PlayerActivity.class);
+                startActivity(intent);
+            }
         }
     }
 }
