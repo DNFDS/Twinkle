@@ -21,18 +21,25 @@ public class MusicService extends Service {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        musicTitle = intent.getStringExtra("MusicTitle");
-        musicPath += musicTitle;
+        if(player==null) {
+            musicTitle = intent.getStringExtra("MusicTitle");
+            musicPath += musicTitle;
 
-        Log.d(TAG,"onCreate");
-        player = new MediaPlayer();
-        try{
-            player.setDataSource(musicPath);
+            Log.d(TAG, "onCreate");
+            player = new MediaPlayer();
+            try {
+                player.setDataSource(musicPath);
 
-            player.prepare();
-        }catch(IOException e){
-            e.printStackTrace();
+                player.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return super.onStartCommand(intent, flags, startId);
