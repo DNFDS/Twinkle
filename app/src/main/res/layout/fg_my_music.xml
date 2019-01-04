@@ -4,16 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fgmymusic_bg">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/user_div"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fgmymusic_bg">
+        android:layout_height="wrap_content">
 
-        <ImageView
+        <com.example.twinkle.view.ImageViewCircle
             android:id="@+id/user_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -354,4 +357,5 @@
             android:visibility="visible" />
     </RelativeLayout>
     </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

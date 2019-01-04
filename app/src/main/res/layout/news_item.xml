@@ -6,7 +6,7 @@
     android:background="@color/colorWhite"
     android:descendantFocusability="blocksDescendants">
 
-    <ImageView
+    <com.example.twinkle.view.ImageViewCircle
         android:id="@+id/user_cover"
         android:layout_width="46dp"
         android:layout_height="46dp"

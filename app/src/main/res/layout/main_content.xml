@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clipChildren="false">
     <View
         android:id="@+id/view_status"
         android:layout_width="match_parent"
@@ -20,14 +21,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-             <ImageView android:id="@+id/iv_title_personal_message"
+            <ImageView android:id="@+id/iv_title_personal_message"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/titlebar_video" />
+                android:src="@drawable/menu" />
             <ImageView android:id="@+id/iv_title_find_music"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
@@ -36,10 +37,9 @@
                 android:layout_alignTop="@+id/iv_title_personal_message"
                 android:src="@drawable/titlebar_news" />
             <ImageView android:id="@+id/iv_title_my_music"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignTop="@+id/iv_title_personal_message"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/titlebar_movie" />
             <ImageView android:id="@+id/iv_title_friends"
@@ -55,7 +55,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_height="27dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/titlebar_video" />
+                android:src="@drawable/player_share" />
             <ImageView
                 android:id="@+id/search_title_image"
                 android:layout_width="wrap_content"
@@ -81,11 +81,99 @@
     </android.support.v7.widget.Toolbar>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="800dp"
+        android:id="@+id/fragment">
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:descendantFocusability="blocksDescendants" />
+        <RelativeLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_marginTop="500dp"
+            android:layout_height="60dp"
+            android:background="@color/colorWhite"
+            android:descendantFocusability="afterDescendants">
+
+            <TextView
+                android:id="@+id/bottm_player_btn"
+                android:layout_width="220dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/colorContent"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/song_cover"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/disc"/>
+
+            <TextView
+                android:id="@+id/song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorContent"
+                android:textSize="16sp"
+                android:text="Time Bomb ft Veela"/>
+
+            <TextView
+                android:id="@+id/singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="34dp"
+                android:text="Feint/Boyinaband"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/play_btn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/play"/>
+
+            <ImageView
+                android:id="@+id/next_play_btn"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="55dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/next_play"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorGray" />
+
+            <ImageView
+                android:id="@+id/songlist_operate"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/manage_playlist" />
+        </RelativeLayout>
     </FrameLayout>
+
 </LinearLayout>

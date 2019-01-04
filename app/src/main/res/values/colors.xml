@@ -34,6 +34,8 @@
     <color name="colorTabText">#585858</color>
     <!--正文文字颜色-->
     <color name="colorContent">#333333</color>
+    <!--标题文字颜色-->
+    <color name="colorBlack">#000000</color>
     <!--水波纹或5.0以下选择器颜色-->
     <color name="tabBackground">#777D7D7D</color>
     <!--item的水波纹颜色-->
