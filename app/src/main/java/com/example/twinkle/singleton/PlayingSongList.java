@@ -30,13 +30,16 @@ public class PlayingSongList {
         else
             return false;
     }
+    //判断正在播放的音乐是否与选择播放的相同
     public Boolean ifEqual(){
         return (pointerIndex == tempindex)&&(playingSongListId==tempSongListId);
     }
+    //修改Index所指位置
     public void setindex(){
         pointerIndex = tempindex;
         playingSongListId=tempSongListId;
     }
+    //获取唯一实例
     public static PlayingSongList getInstance() {
         return list;
     }
@@ -45,6 +48,7 @@ public class PlayingSongList {
         return playingSongs;
     }
 
+    //初始化播放列表
     public void InitPlayingSongList(List<Song>listToPlay, String songListToPlay, int Index) {
         if (playingSongListId.equals(songListToPlay)&&isSame(listToPlay)) {
 
@@ -61,13 +65,15 @@ public class PlayingSongList {
 
         tempindex = Index;
     }
+    //在末尾添加新的音乐
     public void addNew(Song newSong) {
         playingSongs.add(newSong);
     }
-
+    //在下一首的位置添加新的音乐
     public void addNext(Song newSong){
         playingSongs.add(pointerIndex+1,newSong);
     }
+
     private Boolean isSame(List<Song>listToPlay){
         if(playingSongs.size()!=listToPlay.size())
             return false;
@@ -101,20 +107,22 @@ public class PlayingSongList {
             pointerIndex = pointerIndex + 1;
     }
 
+    //得到当前正在播放的音乐实例
     public Song getNow() {
         return playingSongs.get(pointerIndex);
     }
-
+    //得到当前上一首音乐实例
     public Song getPre() {
         moveToPre();
         return getNow();
     }
-    public int getIndexNow(){
-        return pointerIndex;
-    }
+    //得到当前下一首的音乐实例
     public Song getNext() {
         moveToNext();
         return getNow();
+    }
+    public int getIndexNow(){
+        return pointerIndex;
     }
     public void moveToIndex(int target){
         pointerIndex=target;

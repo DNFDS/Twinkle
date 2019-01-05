@@ -6,6 +6,10 @@ import com.example.twinkle.enity.Song;
 
 import java.util.ArrayList;
 
+//=================================================================//
+//                          静态音乐列表
+//                       仅供调试与测试使用
+//=================================================================//
 public class StaticSongList {
     static public ArrayList<Song> musicList_Local = new ArrayList<Song>();
     static public ArrayList<Song> musicList_Stars = new ArrayList<Song>();

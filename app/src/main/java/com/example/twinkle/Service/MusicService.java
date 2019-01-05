@@ -52,6 +52,7 @@ public class MusicService extends Service {
         return new MyBinder();
     }
 
+    //自定义Binder
     public class MyBinder extends Binder {
         public MediaPlayer getPlayer(){
             return player;
@@ -80,31 +81,34 @@ public class MusicService extends Service {
                 }
             }
         }
+        //从播放列表中移除当前歌曲
         public void remove(){
                 playingSongList.remove(playingSongList.getIndexNow());
         }
+        //从播放列表中移除指定歌曲
         public void  remove(int index){
             playingSongList.remove(index);
         }
+        //停止播放
         public void stop(){
             if(player.isPlaying()){
                 player.stop();
                 player.seekTo(0);
             }
         }
-
+        //获取当前歌曲的最大进度限制
         public int getDuration() {
             return player.getDuration();
         }
-
+        //获取当前的播放进度
         public int getCurrentPosition() {
             return player.getCurrentPosition();
         }
-
+        //调整当前的播放进度
         public void seekTo(int mesc) {
             player.seekTo(mesc);
         }
-
+        //播放当前播放列表指定的当前歌曲
         public void newPlay() {
             //播放列表为空
             if(player == null) {
@@ -116,7 +120,7 @@ public class MusicService extends Service {
                 Log.d(TAG, "playingList Empty");
                 return;
             }
-
+            //重置MediaPlayer
             player.reset();
             String path = playingSongList.getNow().getSongPath();
             try {

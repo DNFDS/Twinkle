@@ -54,7 +54,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class PlayerActivity extends AppCompatActivity implements View.OnClickListener,OnItemClickListener , MediaPlayer.OnCompletionListener,InnerItemOnclickListener{
+public class PlayerActivity extends AppCompatActivity implements View.OnClickListener, OnItemClickListener, MediaPlayer.OnCompletionListener, InnerItemOnclickListener {
     private static String TAG = "PlayerActivity";
 
     private ImageView image_return;
@@ -93,38 +93,41 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private String connecturl;
     private String currentUserID;
     private boolean islike;
-    private Handler mhandler=null;
+    private Handler mhandler = null;
     private Runnable likeshow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= 21){
+        //更换顶部颜色
+        //保证界面风格统一
+        if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        mhandler=new Handler();
-        likeshow=new  Runnable(){
+        mhandler = new Handler();
+        likeshow = new Runnable() {
             @Override
             public void run() {
                 //更新界面
-                if(islike)
+                if (islike)
                     image_star.setImageResource(R.drawable.star_yes);
                 else
                     image_star.setImageResource(R.drawable.star_no);
             }
         };
         setContentView(R.layout.activity_player);
-        connecturl=getIntent().getStringExtra("connecturl");
-        currentUserID=getIntent().getStringExtra("currentUserID");
+        connecturl = getIntent().getStringExtra("connecturl");
+        currentUserID = getIntent().getStringExtra("currentUserID");
         Log.d(TAG, "onCreate");
         image_return = (ImageView) findViewById(R.id.return_btn);
         text_title = (TextView) findViewById(R.id.title_Text);
         image_share = (ImageView) findViewById(R.id.share_btn);
 
         image_cover = (ImageView) findViewById(R.id.cover_Image);
-        objectAnimator = ObjectAnimator.ofFloat(image_cover,"rotation",0f,360f);
+        objectAnimator = ObjectAnimator.ofFloat(image_cover, "rotation", 0f, 360f);
         objectAnimator.setDuration(100000);
         objectAnimator.setInterpolator(new LinearInterpolator());
         objectAnimator.setRepeatCount(-1);
@@ -149,8 +152,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         sb_progress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser){
-                    if(progress > musicControl.getDuration()-1) {
+                if (fromUser) {
+                    if (progress > musicControl.getDuration() - 1) {
                         progress = musicControl.getDuration() - 50;
                     }
                     musicControl.seekTo(progress);
@@ -159,207 +162,40 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
+        //启动并绑定Service
         connection = new MyConnection();
         serviceIntent = new Intent(this, MusicService.class);
 
         startService(serviceIntent);
         bindService(serviceIntent, connection, BIND_AUTO_CREATE);
-        playlist=playingSongList.getList();
+        playlist = playingSongList.getList();
         initPopwindow();
-        Log.d(TAG,"BIND");
+        Log.d(TAG, "BIND");
     }
-    public void changeModel(){
+
+    //改变或者获取当前播放循环模式
+    public void changeModel() {
         musicControl.changeModel();
     }
-    public Boolean getModel(){
+
+    public Boolean getModel() {
         return musicControl.getModel();
     }
-    private void likesong(){
-        String url =connecturl+"/favoriteSong";
-        HashMap<String,String> paramsMap=new HashMap<>();
-        paramsMap.put("userid",currentUserID);
-        paramsMap.put("songid",playlist.get(playingSongList.getIndexNow()).getSongID());
-        FormBody.Builder builder = new FormBody.Builder();
-        for (String key : paramsMap.keySet()) {
-            //追加表单信息
-            builder.add(key, paramsMap.get(key));
-        }
-        OkHttpClient okHttpClient = new OkHttpClient();
-        RequestBody formBody=builder.build();
-        Request request=new   Request.Builder().url(url).post(formBody).build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call var1, IOException var) {
-                Log.d("liangyue",var.toString());
-            }
 
-            @Override
-            public void onResponse(Call var1, Response response) throws IOException {
-                String responseStr = response.body().string();
-                Map<String,Object> params= com.alibaba.fastjson.JSONObject.parseObject(responseStr,new TypeReference<Map<String, Object>>(){});
-            }
-        });
-    }
-    private void islikesong(){
-        String url =connecturl+"/isFavorite";
-        HashMap<String,String> paramsMap=new HashMap<>();
-        paramsMap.put("userid",currentUserID);
-        paramsMap.put("songid",playlist.get(playingSongList.getIndexNow()).getSongID());
-        FormBody.Builder builder = new FormBody.Builder();
-        for (String key : paramsMap.keySet()) {
-            //追加表单信息
-            builder.add(key, paramsMap.get(key));
-        }
-        OkHttpClient okHttpClient = new OkHttpClient();
-        RequestBody formBody=builder.build();
-        Request request=new   Request.Builder().url(url).post(formBody).build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call var1, IOException var) {
-                Log.d("liangyue",var.toString());
-            }
 
-            @Override
-            public void onResponse(Call var1, Response response) throws IOException {
-                String responseStr = response.body().string();
-                Map<String,Object> params= com.alibaba.fastjson.JSONObject.parseObject(responseStr,new TypeReference<Map<String, Object>>(){});
-                islike=(Boolean)params.get("succ");
-                Looper.prepare();
-                mhandler.post(likeshow);
-                Looper.loop();
-            }
-        });
-    }
-    @Override
-    public void itemClick(View v) {
-        int position;
-        position = (Integer) v.getTag();
-        switch (v.getId()) {
-            case R.id.delete_btn:
-                musicControl.remove(position);
-                playlist=playingSongList.getList();
-                PlayListAdapter.notifyDataSetInvalidated();
-                musicControl.newPlay();
-                UpdateView();
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        if(playingSongList.getIndexNow()!=position){
-            playingSongList.moveToIndex(position);
-            musicControl.newPlay();
-            playlistPopupWindow.dismiss();
-            updatePlayText();
-
-            //设置进度条的最大值
-            sb_progress.setMax(musicControl.getDuration());
-            //设置进度条的进度
-            sb_progress.setProgress(musicControl.getCurrentPosition());
-
-            UpdateView();
-        }
-    }
-    private void initPopwindow() {
-        //播放列表操作弹窗
-        playlistPopupView = LayoutInflater.from(this).inflate(R.layout.playlist_popup_layout, null, false);
-        playlistListView=playlistPopupView.findViewById(R.id.playlist_list_view);
-        PlayListAdapter = new PlayListAdapter(this, R.layout.playlist_item, playlist);
-        PlayListAdapter.setOnInnerItemOnClickListener(this);
-        playlistListView.setOnItemClickListener(this);
-        playlistListView.setAdapter(PlayListAdapter);
-        playlistPopupWindow = new PopupWindow(playlistPopupView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        playlistPopupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        playlistPopupWindow.setFocusable(true);
-        playlistPopupWindow.setTouchable(true);
-        playlistPopupWindow.setOutsideTouchable(true);
-        playlistPopupWindow.setAnimationStyle(R.style.animTranslate);
-        playlistPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override public void onDismiss() {
-                setBackgroundAlpha(1.0f);
-            }
-        });
-        TextView addsongpopup_out=playlistPopupView.findViewById(R.id.popup_out);
-        addsongpopup_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playlistPopupWindow.dismiss();
-            }
-        });
-        mode_image=playlistPopupView.findViewById(R.id.mode_image);
-        mode_image.setOnClickListener(this);
-        play_mode_title=playlistPopupView.findViewById(R.id.play_mode_title);
-        clear_btn=playlistPopupView.findViewById(R.id.clear_image);
-        clear_btn.setOnClickListener(this);
-        play_mode_title.setOnClickListener(this);
-    }
-    //显示添加歌曲弹窗
-    private void showPopWindow() {
-        View rootview = LayoutInflater.from(this).inflate(R.layout.search_main, null);
-        mode=getModel();
-        if(!mode){
-            mode_image.setImageResource(R.drawable.list_mode);
-            play_mode_title.setText("列表循环");
-        }
-        else {
-            mode_image.setImageResource(R.drawable.single_mode);
-            play_mode_title.setText("单曲循环");
-        }
-        //songname=playlistListView.getChildAt(playingSongList.getIndexNow()).findViewById(R.id.songlist_name);
-        //String song_str = "<font color='#008df2'>"+playlist.get(playingSongList.getIndexNow()).getSongName()+"-"+playlist.get(playingSongList.getIndexNow()).getSingerName()+"</font>";
-        //songname.setText(song_str);
-        playlistPopupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
-    }
-    //调整屏幕亮度
-    public void setBackgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND, WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        lp.alpha = bgAlpha;
-        this.getWindow().setAttributes(lp);
-    }
-    public static Boolean isServiceRunning(Context context, String ServiceName) {
-        if (ServiceName.equals(""))
-            return false;
-        ActivityManager mManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        ArrayList<ActivityManager.RunningServiceInfo> runningServiceInfos
-                = (ArrayList<ActivityManager.RunningServiceInfo>) mManager.getRunningServices(Integer.MAX_VALUE);
-
-        for (int i = 0; i < runningServiceInfos.size(); i++) {
-            if (runningServiceInfos.get(i).getClass().getName().toString().equals(ServiceName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void InitPlayer(){
-
-    }
-
+    //更新当前界面的View 展示
     private void UpdateView() {
         text_title.setText(playingSongList.getNow().getSongName());
         image_cover.setImageResource(playingSongList.getNow().getSongImageId());
         islikesong();
-        Log.d(TAG,"viewOnUpdate");
-    }
-
-    private void UpdateListView(){
-        //在这里更新右下角弹窗信息
+        Log.d(TAG, "viewOnUpdate");
     }
 
     @Override
@@ -396,11 +232,11 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.star_btn:
                 likesong();
-                if(islike){
-                    islike=false;
+                if (islike) {
+                    islike = false;
                     image_star.setImageResource(R.drawable.star_no);
-                }else {
-                    islike=true;
+                } else {
+                    islike = true;
                     image_star.setImageResource(R.drawable.star_yes);
                 }
                 //更新界面
@@ -420,24 +256,22 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.mode_image:
                 changeModel();
-                mode=getModel();
-                if(!mode){
+                mode = getModel();
+                if (!mode) {
                     mode_image.setImageResource(R.drawable.list_mode);
                     play_mode_title.setText("列表循环");
-                }
-                else {
+                } else {
                     mode_image.setImageResource(R.drawable.single_mode);
                     play_mode_title.setText("单曲循环");
                 }
                 break;
             case R.id.play_mode_title:
                 changeModel();
-                mode=getModel();
-                if(!mode){
+                mode = getModel();
+                if (!mode) {
                     mode_image.setImageResource(R.drawable.list_mode);
                     play_mode_title.setText("列表循环");
-                }
-                else {
+                } else {
                     mode_image.setImageResource(R.drawable.single_mode);
                     play_mode_title.setText("单曲循环");
                 }
@@ -458,23 +292,24 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         playNext();
     }
 
+    //自定义Connection
     private class MyConnection implements ServiceConnection, MediaPlayer.OnCompletionListener {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             musicControl = (MusicService.MyBinder) service;
             musicControl.getPlayer().setOnCompletionListener(this);
 
-            Log.d(TAG,"onInitPlayer");
-            if(getIntent().getStringExtra("option").equals("next")){
+            Log.d(TAG, "onInitPlayer");
+            if (getIntent().getStringExtra("option").equals("next")) {
                 musicControl.newPlay();
-            }else {
+            } else {
                 //防止切出去再返回后重新播放
-                if(!playingSongList.ifEqual()){
+                if (!playingSongList.ifEqual()) {
                     playingSongList.setindex();
                     musicControl.newPlay();
                 }
             }
-            Log.d(TAG,"onConnected");
+            Log.d(TAG, "onConnected");
             updatePlayText();
 
             //设置进度条的最大值
@@ -496,23 +331,21 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    //控制播放器播放或暂停
     private void play() {
         musicControl.OnClick_Play(objectAnimator);
         updatePlayText();
         updateProgress();
     }
 
+    //控制播放器停止
     private void stop() {
         musicControl.stop();
         objectAnimator.pause();
     }
 
-    private void star(){
-        //判断当前
-
-    }
-
-    private void playPre(){
+    //播放上一首
+    private void playPre() {
         //从playingList中获取上一首歌的信息
         playingSongList.moveToPre();
         musicControl.newPlay();
@@ -524,9 +357,10 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         UpdateView();
     }
 
-    private void playNext(){
+    //播放下一首
+    private void playNext() {
         //从playingList中获取下一首歌的信息
-        if(!getModel())
+        if (!getModel())
             playingSongList.moveToNext();
         musicControl.newPlay();
         //设置进度条的最大值
@@ -537,20 +371,196 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         UpdateView();
     }
 
+
+    //收藏当前正在播放的歌曲
+    private void likesong() {
+        String url = connecturl + "/favoriteSong";
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("userid", currentUserID);
+        paramsMap.put("songid", playlist.get(playingSongList.getIndexNow()).getSongID());
+        FormBody.Builder builder = new FormBody.Builder();
+        for (String key : paramsMap.keySet()) {
+            //追加表单信息
+            builder.add(key, paramsMap.get(key));
+        }
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody formBody = builder.build();
+        Request request = new Request.Builder().url(url).post(formBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call var1, IOException var) {
+                Log.d("liangyue", var.toString());
+            }
+
+            @Override
+            public void onResponse(Call var1, Response response) throws IOException {
+                String responseStr = response.body().string();
+                Map<String, Object> params = com.alibaba.fastjson.JSONObject.parseObject(responseStr, new TypeReference<Map<String, Object>>() {
+                });
+            }
+        });
+    }
+
+    //判断当前正在播放的歌曲是否已被收藏
+    private void islikesong() {
+        String url = connecturl + "/isFavorite";
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("userid", currentUserID);
+        paramsMap.put("songid", playlist.get(playingSongList.getIndexNow()).getSongID());
+        FormBody.Builder builder = new FormBody.Builder();
+        for (String key : paramsMap.keySet()) {
+            //追加表单信息
+            builder.add(key, paramsMap.get(key));
+        }
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody formBody = builder.build();
+        Request request = new Request.Builder().url(url).post(formBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call var1, IOException var) {
+                Log.d("liangyue", var.toString());
+            }
+
+            @Override
+            public void onResponse(Call var1, Response response) throws IOException {
+                String responseStr = response.body().string();
+                Map<String, Object> params = com.alibaba.fastjson.JSONObject.parseObject(responseStr, new TypeReference<Map<String, Object>>() {
+                });
+                islike = (Boolean) params.get("succ");
+                Looper.prepare();
+                mhandler.post(likeshow);
+                Looper.loop();
+            }
+        });
+    }
+
+    @Override
+    public void itemClick(View v) {
+        int position;
+        position = (Integer) v.getTag();
+        switch (v.getId()) {
+            case R.id.delete_btn:
+                musicControl.remove(position);
+                playlist = playingSongList.getList();
+                PlayListAdapter.notifyDataSetInvalidated();
+                musicControl.newPlay();
+                UpdateView();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (playingSongList.getIndexNow() != position) {
+            playingSongList.moveToIndex(position);
+            musicControl.newPlay();
+            playlistPopupWindow.dismiss();
+            updatePlayText();
+
+            //设置进度条的最大值
+            sb_progress.setMax(musicControl.getDuration());
+            //设置进度条的进度
+            sb_progress.setProgress(musicControl.getCurrentPosition());
+
+            UpdateView();
+        }
+    }
+
+    //播放列表操作弹窗
+    private void initPopwindow() {
+        playlistPopupView = LayoutInflater.from(this).inflate(R.layout.playlist_popup_layout, null, false);
+        playlistListView = playlistPopupView.findViewById(R.id.playlist_list_view);
+        PlayListAdapter = new PlayListAdapter(this, R.layout.playlist_item, playlist);
+        PlayListAdapter.setOnInnerItemOnClickListener(this);
+        playlistListView.setOnItemClickListener(this);
+        playlistListView.setAdapter(PlayListAdapter);
+        playlistPopupWindow = new PopupWindow(playlistPopupView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        playlistPopupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        playlistPopupWindow.setFocusable(true);
+        playlistPopupWindow.setTouchable(true);
+        playlistPopupWindow.setOutsideTouchable(true);
+        playlistPopupWindow.setAnimationStyle(R.style.animTranslate);
+        playlistPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setBackgroundAlpha(1.0f);
+            }
+        });
+        TextView addsongpopup_out = playlistPopupView.findViewById(R.id.popup_out);
+        addsongpopup_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playlistPopupWindow.dismiss();
+            }
+        });
+        mode_image = playlistPopupView.findViewById(R.id.mode_image);
+        mode_image.setOnClickListener(this);
+        play_mode_title = playlistPopupView.findViewById(R.id.play_mode_title);
+        clear_btn = playlistPopupView.findViewById(R.id.clear_image);
+        clear_btn.setOnClickListener(this);
+        play_mode_title.setOnClickListener(this);
+    }
+
+    //显示添加歌曲弹窗
+    private void showPopWindow() {
+        View rootview = LayoutInflater.from(this).inflate(R.layout.search_main, null);
+        mode = getModel();
+        if (!mode) {
+            mode_image.setImageResource(R.drawable.list_mode);
+            play_mode_title.setText("列表循环");
+        } else {
+            mode_image.setImageResource(R.drawable.single_mode);
+            play_mode_title.setText("单曲循环");
+        }
+        //songname=playlistListView.getChildAt(playingSongList.getIndexNow()).findViewById(R.id.songlist_name);
+        //String song_str = "<font color='#008df2'>"+playlist.get(playingSongList.getIndexNow()).getSongName()+"-"+playlist.get(playingSongList.getIndexNow()).getSingerName()+"</font>";
+        //songname.setText(song_str);
+        playlistPopupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+    }
+
+    //调整屏幕亮度
+    public void setBackgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND, WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        lp.alpha = bgAlpha;
+        this.getWindow().setAttributes(lp);
+    }
+
+    //判断Service是否在运行，实际没有用到
+    public static Boolean isServiceRunning(Context context, String ServiceName) {
+        if (ServiceName.equals(""))
+            return false;
+        ActivityManager mManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ArrayList<ActivityManager.RunningServiceInfo> runningServiceInfos
+                = (ArrayList<ActivityManager.RunningServiceInfo>) mManager.getRunningServices(Integer.MAX_VALUE);
+
+        for (int i = 0; i < runningServiceInfos.size(); i++) {
+            if (runningServiceInfos.get(i).getClass().getName().toString().equals(ServiceName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //实时更新进度条
     private void updateProgress() {
-        if(playingSongList.isEmpty())
+        if (playingSongList.isEmpty())
             return;
         int currentPosition = musicControl.getCurrentPosition();
         sb_progress.setProgress(currentPosition);
 
-        if(musicControl.getCurrentPosition() == musicControl.getDuration()) playNext();
+        if (musicControl.getCurrentPosition() == musicControl.getDuration()) playNext();
 
         handler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 500000);
     }
 
-
+    //根据播放状态调整播放/暂停按钮的显示
     private void updatePlayText() {
-        if(playingSongList.isEmpty())
+        if (playingSongList.isEmpty())
             return;
         if (musicControl.isPlaying()) {
             image_play.setImageResource(R.drawable.pause);
@@ -560,6 +570,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         handler.sendEmptyMessage(UPDATE_PROGRESS);
     }
 
+    //异步检测
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
