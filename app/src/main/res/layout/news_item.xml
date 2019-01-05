@@ -6,7 +6,7 @@
     android:background="@color/colorWhite"
     android:descendantFocusability="blocksDescendants">
 
-    <com.example.twinkle.view.ImageViewCircle
+    <ImageView
         android:id="@+id/user_cover"
         android:layout_width="46dp"
         android:layout_height="46dp"
@@ -40,7 +40,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/news_date_title"
+        android:id="@+id/data_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/user_name"
@@ -55,11 +55,11 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/user_cover"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/news_date_title"
+        android:layout_below="@+id/data_title"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginTop="15dp"
-        android:text="假日无缘回家，只能在学校窝着，宝宝心里苦,嘤嘤嘤"
+        android:layout_marginTop="10dp"
+        android:text="分享单曲:假日无缘回家，只能在学校窝着，宝宝心里苦"
         android:textColor="@color/colorContent"
         android:textSize="16sp" />
 
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/content_cover"
         android:layout_below="@+id/news_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:text="专辑：青春的问答"
         android:textColor="@color/colorContent"
@@ -108,7 +108,17 @@
         android:textSize="16sp" />
 
     <ImageView
-        android:id="@+id/news_operate"
+        android:layout_width="330dp"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="59dp"
+        android:background="@color/colorGray"
+        />
+
+    <ImageView
+        android:id="@+id/songlist_operate"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignParentTop="true"
@@ -123,18 +133,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/content_cover"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="31dp"
         android:layout_marginStart="12dp"
         android:text="浏览42次"
         android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/content_agree"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/content_cover"
         android:layout_toStartOf="@+id/content_comment"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="65dp"
         app:srcCompat="@drawable/agree" />
 
@@ -144,18 +154,18 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/content_comment"
         android:layout_below="@+id/content_cover"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="40dp"
         android:text="70"
         android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/content_comment"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/content_cover"
         android:layout_toStartOf="@+id/content_share"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
         app:srcCompat="@drawable/comment" />
 
@@ -165,18 +175,18 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/content_share"
         android:layout_below="@+id/content_cover"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="35dp"
         android:text="70"
         android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/content_share"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/content_cover"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         app:srcCompat="@drawable/share" />
 
@@ -186,31 +196,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/content_cover"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="15dp"
         android:text="70"
         android:textSize="18sp" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/content_share_count"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorGray"
-        />
-
-    <TextView
-        android:id="@+id/shared_news_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="10dp"
-        android:text="假日无缘回家，只能在学校窝着，宝宝心里苦,嘤嘤嘤"
-        android:textColor="@color/colorContent"
-        android:textSize="16sp"
-        android:visibility="gone"/>
 </RelativeLayout>

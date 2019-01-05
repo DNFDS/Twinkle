@@ -63,9 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/IM1"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="每日推荐"
+            android:text="歌手"
             android:textSize="16sp"
             android:textColor="@color/colorContent"/>
 
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/TM1"
             android:layout_toEndOf="@+id/TM1"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="45dp"
             android:text="歌手"
             android:textSize="16sp"
             android:textColor="@color/colorContent"/>
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignTop="@+id/TM1"
-            android:text="排行榜"
+            android:text="歌手"
             android:textSize="16sp"
             android:textColor="@color/colorContent"/>
 
@@ -93,8 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/TM1"
             android:layout_toStartOf="@+id/TM2"
-            android:layout_marginEnd="27dp"
-            android:text="乐库"
+            android:layout_marginEnd="45dp"
+            android:text="歌手"
             android:textSize="16sp"
             android:textColor="@color/colorContent"/>
 
@@ -104,8 +104,8 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/TM1"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="3dp"
-            android:text="听歌识曲"
+            android:layout_marginEnd="20dp"
+            android:text="歌手"
             android:textSize="16sp"
             android:textColor="@color/colorContent"/>
 
@@ -151,7 +151,7 @@
             android:id="@+id/recommend_songlist_image1"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist1"
+            android:src="@drawable/cover"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="15dp"/>
@@ -160,7 +160,7 @@
             android:id="@+id/recommend_songlist_image2"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist2"
+            android:src="@drawable/cover"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="15dp"/>
@@ -168,7 +168,7 @@
             android:id="@+id/recommend_songlist_image3"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist3"
+            android:src="@drawable/cover"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="15dp"/>
@@ -218,7 +218,7 @@
             android:id="@+id/recommend_songlist_image4"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist4"
+            android:src="@drawable/cover"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="198dp"/>
@@ -227,7 +227,7 @@
             android:id="@+id/recommend_songlist_image5"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist5"
+            android:src="@drawable/cover"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="198dp"/>
@@ -235,7 +235,7 @@
             android:id="@+id/recommend_songlist_image6"
             android:layout_width="127dp"
             android:layout_height="127dp"
-            android:src="@drawable/songlist6"
+            android:src="@drawable/cover"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/recommend_songlist_title"
             android:layout_marginTop="198dp"/>
@@ -298,7 +298,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="热门单曲"
+            android:text="热门歌手"
             android:textSize="20sp"
             android:textColor="@color/colorContent"/>
 
@@ -312,7 +312,7 @@
             app:srcCompat="@drawable/more" />
 
         <ImageView
-            android:id="@+id/recommend_song_image1"
+            android:id="@+id/recommend_singer_image1"
             android:layout_width="107dp"
             android:layout_height="107dp"
             android:src="@drawable/singer"
@@ -322,7 +322,7 @@
             android:layout_marginTop="15dp"/>
 
         <ImageView
-            android:id="@+id/recommend_song_image2"
+            android:id="@+id/recommend_singer_image2"
             android:layout_width="107dp"
             android:layout_height="107dp"
             android:src="@drawable/singer"
@@ -330,7 +330,7 @@
             android:layout_below="@+id/recommend_singer_title"
             android:layout_marginTop="15dp"/>
         <ImageView
-            android:id="@+id/recommend_song_image3"
+            android:id="@+id/recommend_singer_image3"
             android:layout_width="107dp"
             android:layout_height="107dp"
             android:src="@drawable/singer"
@@ -340,78 +340,76 @@
             android:layout_marginTop="15dp"/>
 
         <TextView
-            android:id="@+id/recommend_song_text1"
+            android:id="@+id/recommend_singer_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/recommend_song_image1"
-            android:layout_alignEnd="@+id/recommend_song_image1"
-            android:layout_below="@+id/recommend_song_image1"
+            android:layout_alignStart="@+id/recommend_singer_image1"
+            android:layout_alignEnd="@+id/recommend_singer_image1"
+            android:layout_below="@+id/recommend_singer_image1"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="0dp"
-            android:gravity="center"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="30dp"
             android:text="王菲"
             android:textSize="14sp"
             android:textColor="@color/colorContent"/>
 
         <TextView
-            android:id="@+id/recommend_song_text2"
+            android:id="@+id/recommend_singer_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recommend_song_image2"
+            android:layout_below="@+id/recommend_singer_image2"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:text="王菲"
             android:textSize="14sp"
             android:textColor="@color/colorContent"/>
         <TextView
-            android:id="@+id/recommend_song_text3"
+            android:id="@+id/recommend_singer_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/recommend_song_image3"
-            android:layout_alignEnd="@+id/recommend_song_image3"
-            android:layout_below="@+id/recommend_song_image3"
+            android:layout_alignStart="@+id/recommend_singer_image3"
+            android:layout_alignEnd="@+id/recommend_singer_image3"
+            android:layout_below="@+id/recommend_singer_image3"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="30dp"
             android:text="王菲"
             android:textSize="14sp"
-            android:gravity="center"
             android:textColor="@color/colorContent"/>
 
         <TextView
-            android:id="@+id/recommend_song_count1"
+            android:id="@+id/recommend_singer_count1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/recommend_song_image1"
-            android:layout_alignEnd="@+id/recommend_song_image1"
-            android:layout_below="@+id/recommend_song_image1"
+            android:layout_alignStart="@+id/recommend_singer_image1"
+            android:layout_alignEnd="@+id/recommend_singer_image1"
+            android:layout_below="@+id/recommend_singer_image1"
             android:layout_marginTop="25dp"
             android:layout_marginStart="35dp"
             android:layout_marginEnd="30dp"
-            android:text="291.5万"
+            android:text="327.9万"
             android:textSize="10sp" />
 
         <TextView
             android:id="@+id/recommend_singer_count2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recommend_song_image2"
+            android:layout_below="@+id/recommend_singer_image2"
             android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
             android:text="327.9万"
             android:textSize="10sp" />
         <TextView
-            android:id="@+id/recommend_song_count3"
+            android:id="@+id/recommend_singer_count3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/recommend_song_image3"
-            android:layout_alignEnd="@+id/recommend_song_image3"
-            android:layout_below="@+id/recommend_song_image3"
+            android:layout_alignStart="@+id/recommend_singer_image3"
+            android:layout_alignEnd="@+id/recommend_singer_image3"
+            android:layout_below="@+id/recommend_singer_image3"
             android:layout_marginTop="25dp"
             android:layout_marginStart="35dp"
             android:layout_marginEnd="30dp"
-            android:text="267.1万"
+            android:text="327.9万"
             android:textSize="10sp" />
 
     </RelativeLayout>
@@ -433,6 +431,7 @@
             android:layout_centerHorizontal="true"
             android:text="MV推荐"
             android:textSize="20sp"
+            android:clickable="true"
             android:textColor="@color/colorContent"/>
 
         <ImageView

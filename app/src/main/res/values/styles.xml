@@ -1,6 +1,54 @@
 <resources>
 
     <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+
+
+      <!-- 底部radio样式 -->
+    <style name="botttom_tag_style">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/rb_video_textcolor_selector</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
+
+
+    <style name="noAnimation">
+            <item name="android:activityOpenEnterAnimation">@null</item>
+            <item name="android:activityOpenExitAnimation">@null</item>
+            <item name="android:activityCloseEnterAnimation">@null</item>
+            <item name="android:activityCloseExitAnimation">@null</item>
+            <item name="android:taskOpenEnterAnimation">@null</item>
+            <item name="android:taskOpenExitAnimation">@null</item>
+            <item name="android:taskCloseEnterAnimation">@null</item>
+            <item name="android:taskCloseExitAnimation">@null</item>
+            <item name="android:taskToFrontEnterAnimation">@null</item>
+            <item name="android:taskToFrontExitAnimation">@null</item>
+            <item name="android:taskToBackEnterAnimation">@null</item>
+            <item name="android:taskToBackExitAnimation">@null</item>
+
+    </style>
+
+    <style name="noAnimation_Theme" parent="AppTheme">
+            <item name="android:windowAnimationStyle">@style/noAnimation</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowFullscreen">true</item>
+            <item name="android:windowContentOverlay">@null</item>
+    </style>
 
     <style name="AppTheme" parent="MyThemeBlue" />
 
@@ -23,11 +71,6 @@
     <style name="newsonglistTranslate">
         <item name="android:windowEnterAnimation">@anim/new_songlist_translate_in</item>
         <item name="android:windowExitAnimation">@anim/new_songlist_translate_out</item>
-    </style>
-    <!--底部弹窗动画-->
-    <style name="mangagenewsTranslate">
-        <item name="android:windowEnterAnimation">@anim/manage_news_translate_in</item>
-        <item name="android:windowExitAnimation">@anim/manage_news_translate_out</item>
     </style>
     <!--底部弹窗动画-->
     <style name="animTranslate">
@@ -144,6 +187,4 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:singleLine">true</item>
     </style>
-
-
 </resources>

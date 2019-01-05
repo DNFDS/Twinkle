@@ -6,7 +6,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+
     <color name="colorTheme">#008df2</color>
+
     <!--页面背景的颜色-->
     <color name="color_page_bg">#F1F3F4</color>
 
@@ -34,8 +36,6 @@
     <color name="colorTabText">#585858</color>
     <!--正文文字颜色-->
     <color name="colorContent">#333333</color>
-    <!--标题文字颜色-->
-    <color name="colorBlack">#000000</color>
     <!--水波纹或5.0以下选择器颜色-->
     <color name="tabBackground">#777D7D7D</color>
     <!--item的水波纹颜色-->
@@ -69,5 +69,4 @@
     <color name="text_deed_bg">#f6f6f6</color>
     <!--dialog的查看详情键-->
     <color name="colorBtDialog">#38659C</color>
-
 </resources>

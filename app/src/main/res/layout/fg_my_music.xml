@@ -4,19 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/fgmymusic_bg">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/user_div"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/fgmymusic_bg">
 
-        <com.example.twinkle.view.ImageViewCircle
+        <ImageView
             android:id="@+id/user_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -156,6 +153,7 @@
             android:layout_marginTop="63dp"
             android:text="本地音乐"
             android:textColor="@color/colorContent"
+            android:clickable="true"
             android:textSize="18sp" />
 
         <TextView
@@ -164,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/local_music_title"
-            android:layout_marginStart="118dp"
+            android:layout_marginStart="100dp"
             android:text="我的收藏"
             android:textColor="@color/colorContent"
             android:textSize="18sp" />
@@ -175,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/local_music_title"
-            android:layout_marginEnd="118dp"
+            android:layout_marginEnd="100dp"
             android:text="下载管理"
             android:textColor="@color/colorContent"
             android:textSize="18sp" />
@@ -357,5 +355,4 @@
             android:visibility="visible" />
     </RelativeLayout>
     </RelativeLayout>
-    </ScrollView>
 </RelativeLayout>
