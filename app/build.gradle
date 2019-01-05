@@ -30,4 +30,5 @@ dependencies {
     implementation files('libs/okhttp-3.12.1.jar')
     implementation files('libs/okio-1.13.0.jar')
     implementation files('libs/fastjson-1.2.47.jar')
+    implementation 'com.jwenfeng.pulltorefresh:library:1.2.7'
 }

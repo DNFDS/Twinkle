@@ -96,6 +96,30 @@ public class FgFriendsFragment extends Fragment implements InnerItemOnclickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState){
         myfriendView = inflater.inflate(R.layout.fg_friends, container, false);
+        final PullToRefreshLayout p = (PullToRefreshLayout) myfriendView.findViewById(R.id.activity_scrollview);
+        p.setRefreshListener(new BaseRefreshListener() {
+            @Override
+            public void refresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getfriendlist();
+                        getnewslist();
+                        p.finishRefresh();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void loadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p.finishLoadMore();
+                    }
+                },2000);
+            }
+        });
         handler=new Handler();
         show=new  Runnable(){
             @Override

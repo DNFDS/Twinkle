@@ -4,6 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -62,4 +68,5 @@
             android:divider="@null"></ListView>
     </RelativeLayout>
     </ScrollView>
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 </RelativeLayout>
